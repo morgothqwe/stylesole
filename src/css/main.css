@@ -28,6 +28,8 @@ body {
   align-items: center;
   height: 6.4rem;
   border-bottom: 1px solid #ebebebb6;
+
+  margin-bottom: 4.8rem;
 }
 
 .navigation {
@@ -137,3 +139,125 @@ body {
 }
 
 /* MAIN */
+
+.main-container {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  column-gap: 2.4rem;
+}
+
+.product-image {
+  display: flex;
+  justify-content: end;
+}
+
+.image {
+  width: 90%;
+  height: 90%;
+}
+
+.product-info {
+  display: flex;
+  flex-direction: column;
+  gap: 2.4rem;
+}
+
+.product-quote {
+  display: flex;
+  flex-direction: column;
+  gap: 1.8rem;
+}
+
+.product-info h1 {
+  font-size: 3rem;
+  font-weight: 800;
+  line-height: 1.4;
+  color: #3d4853;
+  text-transform: capitalize;
+}
+
+.quote {
+  background-color: #f5f8fc;
+  color: #434d5e;
+  font-size: 1.6rem;
+  font-weight: 500;
+  line-height: 1.6;
+  max-width: 60rem;
+  padding: 1.2rem;
+  border-radius: 1rem;
+  position: relative;
+}
+
+.quote::before {
+  content: ""; /* Required for pseudo-element */
+  position: absolute;
+  left: 20px; /* Position of the tail */
+  top: 100%; /* Below the box */
+  width: 0;
+  height: 0;
+  border-left: 10px solid transparent; /* Left side of triangle */
+  border-right: 10px solid transparent; /* Right side of triangle */
+  border-top: 10px solid #f5f8fc; /* Top side matching background */
+}
+
+.quote-owner {
+  font-size: 1.6rem;
+  font-weight: 500;
+  color: #434d5e;
+}
+
+.color-title,
+.style-title,
+.size-title {
+  color: #333333;
+  font-size: 1.2rem;
+  font-weight: 800;
+  letter-spacing: 0.2rem;
+  text-transform: uppercase;
+}
+
+.product-style,
+.product-size,
+.product-color {
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+}
+
+.product-price {
+  font-size: 1.4rem;
+  font-weight: 500;
+  letter-spacing: -0.04rem;
+}
+
+.size-picker {
+  display: flex;
+  gap: 1rem;
+}
+
+.size-picker span {
+  flex: 0; /* Equal width for all spans */
+  text-align: center; /* Center the text */
+  padding: 0.4rem 1.2rem; /* Optional: Add some padding */
+  border: 1px solid #3d4853;
+  border-radius: 0.8rem;
+  color: #3d4853;
+  font-size: 1.2rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
+.add-to-cart {
+  font-size: 1.8rem;
+  font-weight: 700;
+  border: none;
+  border-radius: 0.8rem;
+  height: 6.4rem;
+  background-color: #2b8265;
+  color: #fff;
+  padding: 0 3.6rem;
+  text-align: center;
+  width: fit-content;
+  text-transform: capitalize;
+}
