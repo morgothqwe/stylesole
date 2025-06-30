@@ -1,0 +1,14 @@
+{
+  "name": "e-ecommerce-stylesole",
+  "version": "1.0.0",
+  "description": "one product e-commerce",
+  "license": "ISC",
+  "author": "keiwan",
+  "scripts": {
+    "start": "parcel index.html",
+    "build": "parcel build index.html --dist-dir ./dist"
+  },
+  "devDependencies": {
+    "parcel": "^2.15.4"
+  }
+}
