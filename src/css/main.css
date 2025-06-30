@@ -224,6 +224,53 @@ body {
   gap: 1.2rem;
 }
 
+.color-picker {
+  display: flex;
+  gap: 1.2rem;
+}
+
+.color-picker span {
+  width: 2.4rem;
+  height: 2.4rem;
+  border-radius: 50%;
+  border: none;
+  position: relative;
+
+  cursor: pointer;
+}
+
+/* this should only applied when user click on it */
+.color-picker span::after {
+  content: "\2713";
+  display: inline-block;
+  color: #fff;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  position: absolute;
+  font-weight: 800;
+}
+
+.color-1 {
+  background-color: #000;
+}
+
+.color-2 {
+  background-color: #1c3a57;
+}
+
+.color-3 {
+  background-color: #48607c;
+}
+
+.color-4 {
+  background-color: #85132b;
+}
+
+.color-5 {
+  background-color: #ebb5ca;
+}
+
 .product-price {
   font-size: 1.4rem;
   font-weight: 500;
@@ -260,4 +307,5 @@ body {
   text-align: center;
   width: fit-content;
   text-transform: capitalize;
+  cursor: pointer;
 }
