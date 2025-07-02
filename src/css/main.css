@@ -57,13 +57,15 @@ body {
 
 .search-input {
   padding: 1rem;
+  max-width: 18rem;
   border-radius: 0.6rem;
   border: 1px solid #bcbcbcb6;
   outline-color: #909090b6;
+  font-weight: 800;
 }
 
 .search-input::placeholder {
-  font-weight: 600;
+  font-weight: 800;
 }
 
 .logo {
