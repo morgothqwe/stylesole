@@ -288,7 +288,7 @@ body {
   flex: 0;
   text-align: center;
   padding: 0.4rem 1.2rem;
-  border: 1px solid #3d4853;
+  border: 1px solid #b1bcc668;
   border-radius: 0.8rem;
   color: #3d4853;
   font-size: 1.2rem;
@@ -298,9 +298,7 @@ body {
 }
 
 .pd-size.selected {
-  background-color: #2b8265;
-  color: #fff;
-  border-color: #1b5844;
+  border-color: #3d4853;
 }
 
 .style-slide {
@@ -324,8 +322,7 @@ body {
 }
 
 .image-info.selected {
-  border: 2px solid #2b8265;
-  background-color: #f5f8fc;
+  border: 2px solid #b1bcc668;
 }
 
 .image-info:hover {
