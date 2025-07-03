@@ -242,9 +242,8 @@ body {
   cursor: pointer;
 }
 
-/* this should only applied when user click on it */
-.color-picker span::after {
-  content: "\2713";
+.pd-color.selected::after {
+  content: "\2713"; /* Checkmark */
   display: inline-block;
   color: #fff;
   top: 50%;
@@ -286,9 +285,9 @@ body {
 }
 
 .size-picker span {
-  flex: 0; /* Equal width for all spans */
-  text-align: center; /* Center the text */
-  padding: 0.4rem 1.2rem; /* Optional: Add some padding */
+  flex: 0;
+  text-align: center;
+  padding: 0.4rem 1.2rem;
   border: 1px solid #3d4853;
   border-radius: 0.8rem;
   color: #3d4853;
@@ -296,6 +295,12 @@ body {
   font-weight: 800;
   text-transform: uppercase;
   cursor: pointer;
+}
+
+.pd-size.selected {
+  background-color: #2b8265;
+  color: #fff;
+  border-color: #1b5844;
 }
 
 .style-slide {
@@ -316,6 +321,11 @@ body {
   cursor: pointer;
   border: 2px solid transparent;
   border-radius: 1.6rem;
+}
+
+.image-info.selected {
+  border: 2px solid #2b8265;
+  background-color: #f5f8fc;
 }
 
 .image-info:hover {
