@@ -4,10 +4,11 @@ class View {
   _productColor = document.querySelector(".color-picker");
 
   constructor() {
-    // Initialize event listeners for color and size selection
+    // Initialize event listeners
     this._addHandlerColorSelection();
     this._addHandlerSizeSelection();
     this._addHandlerProductSelection();
+    this._setDefaultSelections();
   }
 
   _addHandlerColorSelection() {
@@ -45,6 +46,20 @@ class View {
       // Add 'selected' class to the clicked product
       productEl.classList.add("selected");
     });
+  }
+
+  _setDefaultSelections() {
+    // Set default color (first .pd-color)
+    const defaultColor = this._productColor.querySelector(".pd-color");
+    if (defaultColor) defaultColor.classList.add("selected");
+
+    // Set default size (first .pd-size)
+    const defaultSize = this._productSize.querySelector(".pd-size");
+    if (defaultSize) defaultSize.classList.add("selected");
+
+    // Set default product (first .image-info)
+    const defaultProduct = document.querySelector(".style-slide .image-info");
+    if (defaultProduct) defaultProduct.classList.add("selected");
   }
 
   addHandlerAddToCart(handler) {
