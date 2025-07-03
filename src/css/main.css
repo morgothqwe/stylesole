@@ -165,12 +165,6 @@ body {
   gap: 2.4rem;
 }
 
-.product-quote {
-  display: flex;
-  flex-direction: column;
-  gap: 1.8rem;
-}
-
 .product-info h1 {
   font-size: 3rem;
   font-weight: 800;
@@ -179,31 +173,10 @@ body {
   text-transform: capitalize;
 }
 
-.quote {
-  background-color: #f5f8fc;
-  color: #434d5e;
-  font-size: 1.6rem;
-  font-weight: 500;
-  line-height: 1.6;
-  max-width: 60rem;
-  padding: 1.2rem;
-  border-radius: 1rem;
-  position: relative;
-}
-
-.quote::before {
-  content: ""; /* Required for pseudo-element */
-  position: absolute;
-  left: 20px; /* Position of the tail */
-  top: 100%; /* Below the box */
-  width: 0;
-  height: 0;
-  border-left: 10px solid transparent; /* Left side of triangle */
-  border-right: 10px solid transparent; /* Right side of triangle */
-  border-top: 10px solid #f5f8fc; /* Top side matching background */
-}
-
-.quote-owner {
+.product-message {
+  display: flex;
+  flex-direction: column;
+  gap: 1.8rem;
   font-size: 1.6rem;
   font-weight: 500;
   color: #434d5e;
