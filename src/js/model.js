@@ -53,3 +53,7 @@ export const addToCart = function (productInfo) {
   state.carts.push(cartItem);
   return cartItem;
 };
+
+export const cartQuantity = function () {
+  return state.carts.length;
+};

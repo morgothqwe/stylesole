@@ -114,6 +114,10 @@ class View {
     };
     return sizeMap[dataSize] || null;
   }
+
+  renderCartItems(items) {
+    document.querySelector(".item-number").textContent = items;
+  }
 }
 
 export default new View();
