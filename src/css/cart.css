@@ -1,0 +1,162 @@
+/* RESET */
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 62.5%;
+  scroll-behavior: smooth;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Inter", sans-serif;
+  line-height: 1;
+  font-weight: 300;
+}
+
+/* VARIABLES */
+/* LAYOUT */
+
+/* HEADER */
+.header-container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  justify-items: center;
+  align-items: center;
+  height: 6.4rem;
+  border-bottom: 1px solid #ebebebb6;
+
+  margin-bottom: 4.8rem;
+}
+
+.navigation {
+  display: flex;
+  gap: 1.6rem;
+}
+
+.menu-toggle {
+  display: flex;
+  gap: 0.4rem;
+  align-items: center;
+  cursor: pointer;
+}
+
+.ph-list {
+  font-size: 2.4rem;
+}
+
+.menu-text {
+  font-size: 1.2rem;
+  font-weight: 300;
+  letter-spacing: 0.4rem;
+  text-transform: uppercase;
+}
+
+.search-input {
+  padding: 1rem;
+  max-width: 18rem;
+  border-radius: 0.6rem;
+  border: 1px solid #bcbcbcb6;
+  outline-color: #909090b6;
+  font-weight: 800;
+}
+
+.search-input::placeholder {
+  font-weight: 800;
+}
+
+.logo {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+}
+
+.logo:link,
+.logo:visited,
+.logo:hover,
+.logo:active {
+  text-decoration: none;
+  color: #000;
+  text-transform: uppercase;
+}
+
+.ph-flower-lotus {
+  font-size: 3.2rem;
+  color: #ff8f3a;
+}
+
+.logo-text {
+  font-size: 2.4rem;
+  font-weight: 400;
+  letter-spacing: 0.4rem;
+}
+
+.cta-menu {
+  display: flex;
+  gap: 1.6rem;
+  align-items: center;
+}
+
+.login-menu {
+  cursor: pointer;
+  padding: 1rem;
+  color: #3f70a2;
+  font-weight: 600;
+  border-radius: 0.8rem;
+  background-color: #fff;
+  border: 2px solid transparent;
+  box-shadow: 2px 2px 16px rgba(61, 72, 83, 0.15);
+  transition: all 0.3s;
+}
+
+.login-menu:hover,
+.login-menu:active {
+  border: 2px solid #909090b6;
+  transition: all 0.3s;
+}
+
+.cart {
+  display: flex;
+  gap: 0.4rem;
+  align-items: center;
+  position: relative;
+}
+
+.cart:link,
+.cart:visited,
+.cart:hover,
+.cart:active {
+  text-decoration: none;
+  color: #000;
+}
+
+.ph-shopping-cart {
+  font-size: 2.4rem;
+}
+
+.item-number {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2rem;
+  font-weight: 600;
+  background-color: #f49979;
+  color: #fff;
+  width: 1.9rem;
+  height: 1.9rem;
+  border-radius: 50%;
+  position: absolute;
+
+  left: 40%;
+  top: -40%;
+  transform: translateX(-50%);
+}
+
+.cart-text {
+  font-size: 1.4rem;
+}
+
+/* MAIN */

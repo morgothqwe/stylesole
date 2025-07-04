@@ -118,6 +118,24 @@ class View {
   renderCartItems(items) {
     document.querySelector(".item-number").textContent = items;
   }
+
+  _openPopupMessage() {
+    document.querySelector(".added-message").style.display = "grid";
+    document
+      .querySelectorAll("main, header")
+      .forEach((el) => el.classList.add("dimmed"));
+  }
+
+  _closePopupMessage() {
+    document.querySelectorAll(".close-message, .shopping-btn").forEach((el) =>
+      el.addEventListener("click", (e) => {
+        document.querySelector(".added-message").style.display = "none";
+        document
+          .querySelectorAll("main, header")
+          .forEach((el) => el.classList.remove("dimmed"));
+      })
+    );
+  }
 }
 
 export default new View();
