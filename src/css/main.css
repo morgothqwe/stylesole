@@ -352,3 +352,75 @@ body {
 .add-to-cart:hover {
   background-color: #1b5844;
 }
+
+/* Popup message */
+
+.added-message {
+  z-index: 1000;
+  display: grid;
+  grid-template-rows: repeat(2, 1fr);
+  gap: 4.8rem;
+  align-items: center;
+  justify-content: center;
+  max-width: 60rem;
+  border-radius: 1.4rem;
+  margin: 0 auto;
+  padding: 3.2rem;
+}
+
+.message-info,
+.shopping {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  gap: 1.8rem;
+}
+
+.message-check {
+  width: 4.8rem;
+  height: 4.8rem;
+  border-radius: 50%;
+  border: 2px solid #2b8265;
+  font-size: 2.4rem;
+  align-self: center;
+  position: relative;
+}
+
+.message-check::after {
+  content: "\2713"; /* Checkmark */
+  display: inline-block;
+  color: #2b8265;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  position: absolute;
+}
+
+.message-text {
+  font-size: 2.4rem;
+  font-weight: 600;
+  color: #2b8265;
+}
+
+.checkout-link:active,
+.checkout-link:link,
+.checkout-link:visited,
+.checkout-link:hover {
+  text-decoration: none;
+  display: inline-block;
+  padding: 1.4rem 1rem;
+  background-color: #2b8265;
+  color: #fff;
+  font-size: 1.4rem;
+  font-weight: 700;
+  border-radius: 0.8rem;
+  border: none;
+}
+
+.shopping-btn {
+  background-color: #fff;
+  color: #3f70a2;
+  padding: 0 1.2rem;
+  font-size: 1.6rem;
+  border: none;
+}
