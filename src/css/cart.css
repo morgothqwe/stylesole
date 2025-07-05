@@ -20,6 +20,7 @@ body {
 }
 
 /* VARIABLES */
+
 /* LAYOUT */
 
 /* HEADER */
@@ -171,7 +172,7 @@ header {
   display: flex;
   flex-direction: column;
   gap: 4.8rem;
-  max-width: 70rem;
+  max-width: 60rem;
   margin: 0 auto;
   background-color: #fff;
   border-radius: 1.4rem;
@@ -185,12 +186,18 @@ header {
   color: rgb(61 72 83);
 }
 
-.cart-info {
+.empty-cart {
   display: flex;
   flex-direction: column;
   gap: 1.8rem;
   align-items: center;
   text-align: center;
+}
+
+.full-cart {
+  display: flex;
+  flex-direction: column;
+  gap: 1.6rem;
 }
 
 .empty-cart-message {
@@ -209,4 +216,187 @@ header {
   color: #3f70a2;
   font-size: 1.6rem;
   font-weight: 500;
+}
+
+.shop-link:visited,
+.shop-link:link,
+.shop-link:active {
+  text-decoration: none;
+  font-size: 1.6rem;
+  font-weight: 800;
+  text-transform: capitalize;
+  color: #3f70a2;
+}
+
+.product-image {
+  width: 4.8rem;
+  height: 4.8rem;
+}
+
+.cart-label {
+  display: grid;
+  grid-template-columns: 12% 12% 32% 14% 12% 1fr;
+  gap: 1.2rem;
+  font-size: 1.4rem;
+  font-weight: 800;
+  letter-spacing: 1.2;
+  text-transform: uppercase;
+  color: #3d4853;
+}
+
+.cart-qty {
+  width: 6.4rem;
+  color: #3d4853;
+  font-weight: 800;
+  font-size: 1.6rem;
+}
+
+.qty {
+  grid-column-start: 2;
+}
+
+.product-form {
+  display: grid;
+  grid-template-columns: 12% 12% 32% 14% 12% 1fr;
+  gap: 1.2rem;
+  align-items: center;
+  justify-content: center;
+  border-bottom: 1px solid #eaeff7;
+  padding: 1.6rem 0;
+}
+
+.product-form > *:not(:nth-child(6)) {
+  height: 4.8rem;
+  border-radius: 0.6rem;
+}
+
+.product-form > *:not(:first-child):not(:nth-child(5)) {
+  padding: 1rem;
+}
+
+.product-list {
+  color: rgb(61 72 83);
+  text-transform: capitalize;
+  font-size: 1.6rem;
+  font-weight: 400;
+}
+
+.product-size {
+  color: rgb(61 72 83);
+  text-transform: uppercase;
+  font-size: 1.6rem;
+  font-weight: 400;
+}
+
+.product-price {
+  display: grid;
+  font-size: 1.4rem;
+  align-items: center;
+  color: #3d4853;
+  font-weight: 500;
+}
+
+.remove-product {
+  width: 2.4rem;
+  height: 2.4rem;
+  border-radius: 50%;
+  background-color: #f5f8fc;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  font-weight: 800;
+  color: #3d4853;
+}
+
+.remove-product::after {
+  content: "\2715";
+}
+
+.color-picker {
+  grid-column: 1 / -1;
+  display: flex;
+  gap: 1.2rem;
+}
+
+.color-picker span {
+  width: 2.4rem;
+  height: 2.4rem;
+  border-radius: 50%;
+  border: none;
+  position: relative;
+
+  cursor: pointer;
+}
+
+.pd-color.selected::after {
+  content: "\2713"; /* Checkmark */
+  display: inline-block;
+  color: #fff;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  position: absolute;
+  font-weight: 800;
+}
+
+.color-1 {
+  background-color: #000;
+}
+
+.color-2 {
+  background-color: #1c3a57;
+}
+
+.color-3 {
+  background-color: #48607c;
+}
+
+.color-4 {
+  background-color: #85132b;
+}
+
+.color-5 {
+  background-color: #ebb5ca;
+}
+
+/* Check out */
+.check-out {
+  display: flex;
+  flex-direction: column;
+  gap: 1.8rem;
+}
+
+.check-out-card:link,
+.check-out-card:visited,
+.check-out-card:active,
+.check-out-crypto:link,
+.check-out-crypto:visited,
+.check-out-crypto:active {
+  text-decoration: none;
+  color: #fff;
+  font-size: 1.6rem;
+  font-weight: 800;
+}
+
+.check-out-card {
+  padding: 1.4rem 2.4rem;
+  background-color: #2bb265;
+  border-radius: 1rem;
+  width: 24rem;
+  text-align: center;
+}
+
+.check-out-crypto {
+  padding: 1.4rem 2.4rem;
+  background-color: #3f70a2;
+  border-radius: 1rem;
+  width: 24rem;
+  text-align: center;
+}
+
+.btc {
+  font-size: 1.4rem;
+  font-weight: 600;
 }
