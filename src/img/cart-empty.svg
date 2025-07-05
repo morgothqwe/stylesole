@@ -1,0 +1,19 @@
+<svg id="svg-CartEmpty" data-name="Cart Empty" xmlns="http://www.w3.org/2000/svg" width="142" height="142.02" viewBox="0 0 142 142.02">
+  <defs>
+  </defs>
+  <title>cart-empty</title>
+  <g>
+    <path fill="#bdcad8" d="M606.1,1558.74" transform="translate(-574.57 -1472.48)"/>
+    <ellipse fill="#f3f5f9" cx="71" cy="71.01" rx="71" ry="71.01"/>
+    <path fill="#dde4ec" d="M596.7,1552.91V1595a70.92,70.92,0,0,0,97.74,0v-42.06H596.7Z" transform="translate(-574.57 -1472.48)"/>
+    <g>
+      <polygon fill="#a3afbb" points="106.57 71.01 71 71.01 35.43 71.01 22.13 80.44 71 80.44 119.87 80.44 106.57 71.01"/>
+      <rect fill="#bdcad8" x="35.43" y="71.01" width="71.08" height="9.42"/>
+    </g>
+    <g>
+      <circle fill="#bdcad8" cx="62.34" cy="89.05" r="3.13"/>
+      <circle fill="#bdcad8" cx="79.6" cy="89.05" r="3.13"/>
+    </g>
+    <path fill="#fff" d="M654.17,1562.53a1,1,0,0,1-1-1c0-6.41-3.42-11.62-7.63-11.62s-7.63,5.21-7.63,11.62a1,1,0,0,1-2,0c0-7.51,4.32-13.62,9.63-13.62s9.63,6.11,9.63,13.62A1,1,0,0,1,654.17,1562.53Z" transform="translate(-574.57 -1472.48)"/>
+  </g>
+</svg>
