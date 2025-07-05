@@ -171,8 +171,8 @@ header {
 .cart-section {
   display: flex;
   flex-direction: column;
-  gap: 4.8rem;
-  max-width: 60rem;
+  gap: 2.4rem;
+  max-width: 65rem;
   margin: 0 auto;
   background-color: #fff;
   border-radius: 1.4rem;
@@ -183,6 +183,7 @@ header {
   font-size: 2.4rem;
   font-weight: 800;
   line-height: 1.5;
+  letter-spacing: 1.2;
   color: rgb(61 72 83);
 }
 
@@ -222,10 +223,15 @@ header {
 .shop-link:link,
 .shop-link:active {
   text-decoration: none;
-  font-size: 1.6rem;
+}
+
+.shop-link {
+  letter-spacing: 1.1;
+  font-size: 1.8rem;
   font-weight: 800;
   text-transform: capitalize;
   color: #3f70a2;
+  margin-bottom: 1.2rem;
 }
 
 .product-image {
@@ -242,17 +248,6 @@ header {
   letter-spacing: 1.2;
   text-transform: uppercase;
   color: #3d4853;
-}
-
-.cart-qty {
-  width: 6.4rem;
-  color: #3d4853;
-  font-weight: 800;
-  font-size: 1.6rem;
-}
-
-.qty {
-  grid-column-start: 2;
 }
 
 .product-form {
@@ -274,11 +269,24 @@ header {
   padding: 1rem;
 }
 
+.cart-qty {
+  width: 6.4rem;
+  color: #3d4853;
+  font-weight: 800;
+  font-size: 1.6rem;
+  border: 2px solid #eaeff7;
+}
+
+.qty {
+  grid-column-start: 2;
+}
+
 .product-list {
   color: rgb(61 72 83);
   text-transform: capitalize;
   font-size: 1.6rem;
   font-weight: 400;
+  border: 2px solid #eaeff7;
 }
 
 .product-size {
@@ -286,6 +294,7 @@ header {
   text-transform: uppercase;
   font-size: 1.6rem;
   font-weight: 400;
+  border: 2px solid #eaeff7;
 }
 
 .product-price {
