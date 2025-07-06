@@ -57,3 +57,16 @@ export const addToCart = function (productInfo) {
 export const cartQuantity = function () {
   return state.carts.length;
 };
+
+export const cartState = function () {
+  const item = {
+    id: "p-1",
+    name: "classic long sleeve tee",
+    price: 28.0,
+    color: "black",
+    size: "s",
+  };
+  state.carts.push(item);
+
+  return state.carts;
+};

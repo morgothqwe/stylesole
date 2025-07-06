@@ -10,14 +10,15 @@
       rel="stylesheet"
     />
 
-    <link rel="stylesheet" href="./src/css/cart.css" />
-    <script type="module" src="./src/js/controller.js"></script>
-
     <link
       rel="stylesheet"
       type="text/css"
       href="https://cdn.jsdelivr.net/npm/@phosphor-icons/web@2.1.1/src/light/style.css"
     />
+
+    <link rel="stylesheet" href="./src/css/cart.css" />
+    <script type="module" src="./src/js/cart/controller.js"></script>
+
     <title>StyleSole: Your Signature Look</title>
   </head>
   <body>
@@ -59,9 +60,9 @@
       <section class="cart-section">
         <h1 class="cart-heading">Your cart</h1>
         <!-- add empty-cart class for empty state to cart-info element -->
-        <div class="cart-info full-cart">
+        <div class="cart-info">
           <!-- EMPTY CART -->
-          <!-- <span class="empty-cart">
+          <!-- <span>
             <img
               src="./src/img/cart-empty.svg"
               alt="empty cart"
@@ -72,7 +73,7 @@
           <a href="index.html" class="explore-shop">Add something to it.</a> -->
 
           <!-- FULL CART -->
-          <a href="index.html" class="shop-link">green apple books</a>
+          <!-- <a href="index.html" class="shop-link">green apple books</a>
           <div class="cart-label">
             <span class="qty">qty</span>
             <span class="product-name">product</span>
@@ -121,13 +122,12 @@
             </span>
           </form>
 
-          <!-- Check Out -->
           <div class="check-out">
             <a href="#" class="check-out-card">Check out with Card</a>
             <a href="#" class="check-out-crypto"
               >Check out with <em class="btc">Bitcoin</em></a
             >
-          </div>
+          </div> -->
         </div>
       </section>
     </main>
