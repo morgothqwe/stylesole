@@ -1,8 +1,15 @@
+import style1 from "url:../img/style-1.webp";
+import style2 from "url:../img/style-2.webp";
+import style3 from "url:../img/style-3.webp";
+import style4 from "url:../img/style-4.webp";
+import style5 from "url:../img/style-5.webp";
+
 const products = [
   {
     id: "p-1",
     name: "classic long sleeve tee",
     price: 28.0,
+    image_path: style1,
     color: ["black", "blue", "gray", "red", "pink"],
     size: ["s", "m", "l", "xl", "2xl"],
   },
@@ -10,6 +17,7 @@ const products = [
     id: "p-2",
     name: "pullover hoodie",
     price: 32.0,
+    image_path: style2,
     color: ["black", "blue", "gray", "red", "pink"],
     size: ["s", "m", "l", "xl", "2xl"],
   },
@@ -17,6 +25,7 @@ const products = [
     id: "p-3",
     name: "classic unisex tee",
     price: 22.0,
+    image_path: style3,
     color: ["black", "blue", "gray", "red", "pink"],
     size: ["s", "m", "l", "xl", "2xl"],
   },
@@ -24,6 +33,7 @@ const products = [
     id: "p-4",
     name: "women's slim fit tee",
     price: 38.0,
+    image_path: style4,
     color: ["black", "blue", "gray", "red", "pink"],
     size: ["s", "m", "l", "xl", "2xl"],
   },
@@ -31,26 +41,27 @@ const products = [
     id: "p-5",
     name: "youth unisex tee",
     price: 22.0,
+    image_path: style5,
     color: ["black", "blue", "gray", "red", "pink"],
     size: ["s", "m", "l", "xl", "2xl"],
   },
 ];
 
 const state = {
-  carts: [],
+  carts: JSON.parse(localStorage.getItem("cart")) || [], // Load from localStorage on init
 };
 
 export const addToCart = function (productInfo) {
   const product = products.find((pd) => pd.id === productInfo.productId);
   if (!product) return;
 
-  // Create a new object to avoid mutating the original
   const cartItem = {
     ...product,
     size: productInfo.sizeId,
     color: productInfo.colorId,
   };
   state.carts.push(cartItem);
+  localStorage.setItem("cart", JSON.stringify(state.carts)); // Save to localStorage
   return cartItem;
 };
 
@@ -59,23 +70,12 @@ export const cartQuantity = function () {
 };
 
 export const cartState = function () {
-  const item = {
-    id: "p-1",
-    name: "classic long sleeve tee",
-    price: 28.0,
-    color: "black",
-    size: "s",
-  };
-  state.carts.push(item);
-
-  const item1 = {
-    id: "p-2",
-    name: "classic long sleeve tee",
-    price: 38.0,
-    color: "black",
-    size: "s",
-  };
-  state.carts.push(item1);
-  // Add image path to the object
   return state.carts;
+};
+
+export const removeFromCart = function (index) {
+  if (index >= 0 && index < state.carts.length) {
+    state.carts.splice(index, 1); // Remove item at index
+    localStorage.setItem("cart", JSON.stringify(state.carts)); // Update localStorage
+  }
 };
