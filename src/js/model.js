@@ -68,5 +68,14 @@ export const cartState = function () {
   };
   state.carts.push(item);
 
+  const item1 = {
+    id: "p-2",
+    name: "classic long sleeve tee",
+    price: 38.0,
+    color: "black",
+    size: "s",
+  };
+  state.carts.push(item1);
+  // Add image path to the object
   return state.carts;
 };

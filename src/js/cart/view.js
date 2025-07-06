@@ -28,13 +28,6 @@ class View {
     if (Array.isArray(cartState) && cartState.length !== 0) {
       const markup = cartState.map(
         (item) => `
-        <a href="index.html" class="shop-link">green apple books</a>
-        <div class="cart-label">
-          <span class="qty">qty</span>
-          <span class="product-name">product</span>
-          <span class="size">size</span>
-          <span class="price">price</span>
-        </div>
         <form action="" class="product-form">
           <img src="${shopImg}" alt="" class="product-image" />
           <input
@@ -76,13 +69,6 @@ class View {
             <span class="pd-color color-5" data-color="color-5"></span>
           </span>
         </form>
-
-        <div class="check-out">
-          <a href="#" class="check-out-card">Check out with Card</a>
-          <a href="#" class="check-out-crypto"
-            >Check out with <em class="btc">Bitcoin</em></a
-          >
-        </div>
       `
       );
       this._cartInfo.innerHTML = "";
@@ -90,7 +76,30 @@ class View {
         this._cartInfo.classList.toggle("empty-cart");
       }
       this._cartInfo.classList.add("full-cart");
-      this._cartInfo.insertAdjacentHTML("afterbegin", markup);
+      this._cartInfo.insertAdjacentHTML(
+        "afterbegin",
+        `
+        <a href="index.html" class="shop-link">green apple books</a>
+        <div class="cart-label">
+          <span class="qty">qty</span>
+          <span class="product-name">product</span>
+          <span class="size">size</span>
+          <span class="price">price</span>
+        </div>
+        `
+      );
+      this._cartInfo.insertAdjacentHTML("beforeend", markup);
+      this._cartInfo.insertAdjacentHTML(
+        "beforeend",
+        `
+        <div class="check-out">
+          <a href="#" class="check-out-card">Check out with Card</a>
+          <a href="#" class="check-out-crypto"
+            >Check out with <em class="btc">Bitcoin</em></a
+          >
+        </div>
+        `
+      );
     }
   }
 }
