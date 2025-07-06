@@ -7,7 +7,6 @@ class View {
     // Initialize event listeners
     this._addHandlerColorSelection();
     this._addHandlerSizeSelection();
-    this._addHandlerProductSelection();
     this._setDefaultSelections();
   }
 
@@ -35,7 +34,7 @@ class View {
     });
   }
 
-  _addHandlerProductSelection() {
+  _addHandlerProductSelection(handler) {
     document.querySelector(".style-slide").addEventListener("click", (e) => {
       const productEl = e.target.closest(".image-info");
       if (!productEl) return;
@@ -45,7 +44,24 @@ class View {
         .forEach((el) => el.classList.remove("selected"));
       // Add 'selected' class to the clicked product
       productEl.classList.add("selected");
+
+      const productId = productEl.dataset.id;
+      if (handler && productId) {
+        handler(productId); // Call handler for price update
+      }
     });
+  }
+
+  addHandlerProductSelection(handler) {
+    this._handlerProductSelection = handler; // Store handler for default selection
+    this._addHandlerProductSelection(handler); // Pass handler to internal method
+  }
+
+  renderProductPrice(price) {
+    document.querySelector(".product-price").textContent = "";
+    document.querySelector(".product-price").textContent = `$${price.toFixed(
+      2
+    )} USD`;
   }
 
   _setDefaultSelections() {

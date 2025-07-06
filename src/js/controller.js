@@ -10,8 +10,18 @@ const controlAddToCart = function (productInfo) {
   view._closePopupMessage();
 };
 
+const controlPrice = function (productId) {
+  const price = model.productPrice(productId);
+  if (price !== null) {
+    view.renderProductPrice(price);
+  } else {
+    console.error("Product not found for ID:", productId);
+  }
+};
+
 const init = function () {
   view.addHandlerAddToCart(controlAddToCart);
+  view.addHandlerProductSelection(controlPrice);
 };
 
 init();

@@ -79,3 +79,8 @@ export const removeFromCart = function (index) {
     localStorage.setItem("cart", JSON.stringify(state.carts)); // Update localStorage
   }
 };
+
+export const productPrice = function (productId) {
+  const product = products.find((item) => item.id === productId);
+  return product ? product.price : null;
+};
