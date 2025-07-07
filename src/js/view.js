@@ -25,6 +25,20 @@ class View {
           .forEach((el) => el.classList.add("dimmed"));
       }
     });
+
+    // Add click event listener to close login popup when clicking outside
+    document.addEventListener("click", (e) => {
+      if (
+        !this._login.contains(e.target) &&
+        !this._loginMenu.contains(e.target) &&
+        !this._login.classList.contains("hidden")
+      ) {
+        this._login.classList.add("hidden");
+        document
+          .querySelectorAll("main, header")
+          .forEach((el) => el.classList.remove("dimmed"));
+      }
+    });
   }
 
   _addHandlerColorSelection() {
