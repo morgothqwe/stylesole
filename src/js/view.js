@@ -2,12 +2,29 @@ class View {
   _addToCart = document.querySelector(".add-to-cart");
   _productSize = document.querySelector(".size-picker");
   _productColor = document.querySelector(".color-picker");
+  _loginMenu = document.querySelector(".login-menu");
+  _login = document.querySelector(".login");
 
   constructor() {
     // Initialize event listeners
+    this._addHandlerLogin();
     this._addHandlerColorSelection();
     this._addHandlerSizeSelection();
     this._setDefaultSelections();
+    this._closeLogin();
+  }
+
+  _addHandlerLogin() {
+    this._loginMenu.addEventListener("click", (e) => {
+      e.preventDefault();
+
+      if (this._login.classList.contains("hidden")) {
+        this._login.classList.remove("hidden");
+        document
+          .querySelectorAll("main, header")
+          .forEach((el) => el.classList.add("dimmed"));
+      }
+    });
   }
 
   _addHandlerColorSelection() {
@@ -151,6 +168,17 @@ class View {
           .forEach((el) => el.classList.remove("dimmed"));
       })
     );
+  }
+
+  _closeLogin() {
+    document
+      .querySelector(".login-close-message")
+      .addEventListener("click", (e) => {
+        this._login.classList.add("hidden");
+        document
+          .querySelectorAll("main, header")
+          .forEach((el) => el.classList.remove("dimmed"));
+      });
   }
 }
 

@@ -374,7 +374,8 @@ body {
   box-shadow: 0px 0px 5px 0px rgba(108, 108, 108, 0.48);
 }
 
-.close-message {
+.close-message,
+.login-close-message {
   position: absolute;
   padding: 1rem;
   margin: 1rem;
@@ -388,11 +389,13 @@ body {
   cursor: pointer;
 }
 
-.close-message::before {
+.close-message::before,
+.login-close-message::before {
   content: "\2715";
 }
 
-.close-message:hover {
+.close-message:hover,
+.login-close-message:hover {
   background-color: #e4efff;
   color: #676767fd;
 }
@@ -466,4 +469,124 @@ body {
   filter: blur(0.6px);
   opacity: 0.7;
   transition: all 0.3s ease;
+}
+
+/* Login */
+.login {
+  z-index: 1000;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: grid;
+  grid-template-columns: 1fr;
+  justify-items: center;
+  gap: 1rem;
+  background-color: #fff;
+  border-radius: 1.4rem;
+  margin: 0 auto;
+  width: 45rem;
+  padding: 4.8rem 3.6rem;
+  box-shadow: 0px 0px 5px 0px rgba(108, 108, 108, 0.48);
+}
+
+.login-welcome {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 2.4rem;
+}
+
+.login-welcome span:first-child {
+  font-size: 2.4rem;
+  color: #3d4853;
+  font-weight: 600;
+}
+
+.login-welcome span:last-child {
+  font-size: 1.2rem;
+  color: #3d4853;
+  letter-spacing: -0.02rem;
+}
+
+.login-detail form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.login-detail form input {
+  width: 30rem;
+  height: 4.8rem;
+  padding: 1.2rem 1.6rem;
+  border: 2px solid #eaeff7;
+  border-radius: 0.8rem;
+  line-height: 1.6;
+  background-color: #fff;
+  color: #3d4853;
+  font-size: 1.4rem;
+  font-weight: 800;
+}
+
+.login-detail form label {
+  font-size: 1.2rem;
+  font-weight: 800;
+  letter-spacing: 1.4;
+  color: #3d4853;
+  text-transform: uppercase;
+}
+
+.login-email {
+  margin-bottom: 1rem;
+}
+
+.login-password {
+  margin-bottom: 1rem;
+}
+
+.forgot-password {
+  margin-bottom: 3.2rem;
+  color: #3f70a2;
+  font-size: 1.4rem;
+  font-weight: 700;
+  border-bottom: 1px solid;
+  width: fit-content;
+}
+
+.forgot-password:link,
+.forgot-password:visited,
+.forgot-password:active {
+  text-decoration: none;
+}
+
+.login-btn {
+  margin-bottom: 1.6rem;
+  background-color: #2b8265;
+  height: 4.8rem;
+  border-radius: 0.8rem;
+  border: none;
+  color: #fff;
+  font-size: 1.4rem;
+  font-weight: 700;
+  line-height: 1.4;
+  letter-spacing: 1.2;
+  text-transform: uppercase;
+  padding: 1.6rem 2.4rem;
+}
+
+.sign-up {
+  align-self: center;
+  font-size: 1.2rem;
+  font-weight: 400;
+}
+
+.create-account:link,
+.create-account:visited,
+.create-account:active {
+  color: #3f70a2;
+}
+
+.hidden {
+  display: none;
 }

@@ -20,6 +20,7 @@ const controlPrice = function (productId) {
 };
 
 const init = function () {
+  // view._closeLogin();
   view.addHandlerAddToCart(controlAddToCart);
   view.addHandlerProductSelection(controlPrice);
 };
