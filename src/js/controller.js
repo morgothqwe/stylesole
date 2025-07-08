@@ -19,10 +19,24 @@ const controlPrice = function (productId) {
   }
 };
 
+const controlImage = function (productId) {
+  const image = model.productImage(productId);
+  if (image !== null) {
+    view.renderImage(image);
+  } else {
+    console.error("Product not found for ID:", productId);
+  }
+};
+
+// New combined handler function
+const controlProductSelection = function (productId) {
+  controlPrice(productId); // Call price handler
+  controlImage(productId); // Call image handler
+};
+
 const init = function () {
-  // view._closeLogin();
   view.addHandlerAddToCart(controlAddToCart);
-  view.addHandlerProductSelection(controlPrice);
+  view.addHandlerProductSelection(controlProductSelection); // Pass single handler
 };
 
 init();

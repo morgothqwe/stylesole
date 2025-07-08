@@ -166,6 +166,10 @@ class View {
     document.querySelector(".item-number").textContent = items;
   }
 
+  renderImage(image) {
+    document.querySelector(".image").src = image;
+  }
+
   _openPopupMessage() {
     document.querySelector(".added-message").style.display = "grid";
     document

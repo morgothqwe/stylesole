@@ -3,6 +3,11 @@ import style2 from "url:../img/style-2.webp";
 import style3 from "url:../img/style-3.webp";
 import style4 from "url:../img/style-4.webp";
 import style5 from "url:../img/style-5.webp";
+import bigStyle1 from "url:../img/bigStyle-1.webp";
+import bigStyle2 from "url:../img/bigStyle-2.webp";
+import bigStyle3 from "url:../img/bigStyle-3.webp";
+import bigStyle4 from "url:../img/bigStyle-4.webp";
+import bigStyle5 from "url:../img/bigStyle-5.webp";
 
 const products = [
   {
@@ -10,6 +15,7 @@ const products = [
     name: "classic long sleeve tee",
     price: 28.0,
     image_path: style1,
+    bigImage_path: bigStyle1,
     color: ["black", "blue", "gray", "red", "pink"],
     size: ["s", "m", "l", "xl", "2xl"],
   },
@@ -18,6 +24,7 @@ const products = [
     name: "pullover hoodie",
     price: 32.0,
     image_path: style2,
+    bigImage_path: bigStyle2,
     color: ["black", "blue", "gray", "red", "pink"],
     size: ["s", "m", "l", "xl", "2xl"],
   },
@@ -26,6 +33,7 @@ const products = [
     name: "classic unisex tee",
     price: 22.0,
     image_path: style3,
+    bigImage_path: bigStyle3,
     color: ["black", "blue", "gray", "red", "pink"],
     size: ["s", "m", "l", "xl", "2xl"],
   },
@@ -34,6 +42,7 @@ const products = [
     name: "women's slim fit tee",
     price: 38.0,
     image_path: style4,
+    bigImage_path: bigStyle4,
     color: ["black", "blue", "gray", "red", "pink"],
     size: ["s", "m", "l", "xl", "2xl"],
   },
@@ -42,6 +51,7 @@ const products = [
     name: "youth unisex tee",
     price: 22.0,
     image_path: style5,
+    bigImage_path: bigStyle5,
     color: ["black", "blue", "gray", "red", "pink"],
     size: ["s", "m", "l", "xl", "2xl"],
   },
@@ -83,4 +93,9 @@ export const removeFromCart = function (index) {
 export const productPrice = function (productId) {
   const product = products.find((item) => item.id === productId);
   return product ? product.price : null;
+};
+
+export const productImage = function (productId) {
+  const product = products.find((item) => item.id === productId);
+  return product ? product.bigImage_path : null;
 };
