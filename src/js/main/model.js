@@ -1,13 +1,13 @@
-import style1 from "url:../img/style-1.webp";
-import style2 from "url:../img/style-2.webp";
-import style3 from "url:../img/style-3.webp";
-import style4 from "url:../img/style-4.webp";
-import style5 from "url:../img/style-5.webp";
-import bigStyle1 from "url:../img/bigStyle-1.webp";
-import bigStyle2 from "url:../img/bigStyle-2.webp";
-import bigStyle3 from "url:../img/bigStyle-3.webp";
-import bigStyle4 from "url:../img/bigStyle-4.webp";
-import bigStyle5 from "url:../img/bigStyle-5.webp";
+import style1 from "url:../../img/style-1.webp";
+import style2 from "url:../../img/style-2.webp";
+import style3 from "url:../../img/style-3.webp";
+import style4 from "url:../../img/style-4.webp";
+import style5 from "url:../../img/style-5.webp";
+import bigStyle1 from "url:../../img/bigStyle-1.webp";
+import bigStyle2 from "url:../../img/bigStyle-2.webp";
+import bigStyle3 from "url:../../img/bigStyle-3.webp";
+import bigStyle4 from "url:../../img/bigStyle-4.webp";
+import bigStyle5 from "url:../../img/bigStyle-5.webp";
 
 const products = [
   {

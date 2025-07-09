@@ -1,14 +1,27 @@
 {
   "name": "e-ecommerce-stylesole",
   "version": "1.0.0",
-  "description": "one product e-commerce",
+  "description": "One product e-commerce platform for StyleSole",
   "license": "ISC",
   "author": "keiwan",
+  "source": [
+    "index.html",
+    "cart.html",
+    "checkout.html"
+  ],
   "scripts": {
-    "start": "parcel index.html",
-    "build": "parcel build index.html --dist-dir ./dist"
+    "start": "parcel index.html cart.html checkout.html",
+    "build": "parcel build index.html cart.html checkout.html --dist-dir ./dist"
   },
   "devDependencies": {
     "parcel": "^2.15.4"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/keiwan/e-ecommerce-stylesole.git"
+  },
+  "bugs": {
+    "url": "https://github.com/keiwan/e-ecommerce-stylesole/issues"
+  },
+  "homepage": "https://github.com/keiwan/e-ecommerce-stylesole#readme"
 }

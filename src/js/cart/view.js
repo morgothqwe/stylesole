@@ -144,8 +144,8 @@ class View {
         "beforeend",
         `
         <div class="check-out">
-          <a href="#" class="check-out-card">Check out with Card</a>
-          <a href="#" class="check-out-crypto"
+          <a href="checkout.html" class="check-out-card">Check out with Card</a>
+          <a href="checkout.html" class="check-out-crypto"
             >Check out with <em class="btc">Bitcoin</em></a
           >
         </div>

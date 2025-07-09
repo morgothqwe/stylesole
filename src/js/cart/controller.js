@@ -1,5 +1,5 @@
 import view from "./view";
-import * as model from "../model";
+import * as model from "../main/model";
 
 const controlCartState = function () {
   const cartState = model.cartState();
