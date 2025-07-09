@@ -55,6 +55,207 @@
     </header>
 
     <!-- Main -->
-    <main></main>
+    <main>
+      <section class="order">
+        <div class="shipping-info">
+          <h3>Shipping information</h3>
+          <form action="" class="shipping-form">
+            <div class="section-name">
+              <label for="full-name">full name</label>
+              <input
+                type="text"
+                name="full-name"
+                id=""
+                class="full-name"
+                placeholder="Your first name and last name"
+              />
+            </div>
+            <div class="section-address">
+              <div>
+                <label for="street-address">street address</label>
+                <input
+                  type="text"
+                  name="street-address"
+                  id=""
+                  class="street-address"
+                  placeholder="123 example address"
+                />
+              </div>
+
+              <div>
+                <label for="apt-suite">apt/suite</label>
+                <input
+                  type="text"
+                  name="apt-suite"
+                  id=""
+                  class="apt-suite"
+                  placeholder="Apt/Suite"
+                />
+              </div>
+            </div>
+            <div class="section-city">
+              <div>
+                <label for="city">city</label>
+                <input
+                  type="text"
+                  name="city"
+                  id=""
+                  class="city"
+                  placeholder="City"
+                />
+              </div>
+
+              <div>
+                <label for="state">state</label>
+                <input
+                  type="text"
+                  name="state"
+                  id=""
+                  class="state"
+                  placeholder="State/Province"
+                />
+              </div>
+
+              <div>
+                <label for="zip-code">zip code</label>
+                <input
+                  type="text"
+                  name="zip-code"
+                  id=""
+                  class="zip-code"
+                  placeholder="Zip code"
+                />
+              </div>
+            </div>
+            <div class="section-country">
+              <label for="country">country</label>
+              <select name="country" id="" class="country">
+                <option value="Iran">Iran</option>
+                <option value="French">French</option>
+              </select>
+            </div>
+            <div class="section-email">
+              <div>
+                <label for="email-address">email address</label>
+                <input
+                  type="email"
+                  name="email-address"
+                  id=""
+                  class="email-address"
+                  placeholder="email@example.com"
+                />
+              </div>
+
+              <div>
+                <label for="mobile-phone">mobile phone</label>
+                <input
+                  type="text"
+                  name="mobile-phone"
+                  id=""
+                  class="mobile-phone"
+                />
+              </div>
+            </div>
+            <div class="section-billing">
+              <input
+                type="checkbox"
+                name="billing-shipping"
+                id=""
+                class="billing-shipping"
+              />
+              <span>Billing address is same as shipping</span>
+            </div>
+          </form>
+        </div>
+
+        <!-- ORDER SUMMARY -->
+        <div class="order-summary">
+          <h3 class="summary-heading">order summary</h3>
+          <section class="section-summary">
+            <div class="brand-name">
+              <h3>green apple books</h3>
+              <div>
+                <span>arrives between</span>
+                <span>august 1st</span>
+                <span>and august 12th</span>
+              </div>
+            </div>
+            <!-- products list -->
+            <div class="products-list">
+              <div class="product">
+                <div class="product-img">
+                  <img src="./src/img/style-1.webp" alt="" class="image" />
+                </div>
+                <div class="product-info">
+                  <div>
+                    <span>classic unisex tee</span>
+                    <span>(1)</span>
+                  </div>
+                  <div>
+                    <span>green</span>
+                    <span>S</span>
+                  </div>
+                </div>
+                <div class="product-price">
+                  <span>$27.00</span>
+                </div>
+              </div>
+
+              <div class="product">
+                <div class="product-img">
+                  <img src="./src/img/style-2.webp" alt="" class="image" />
+                </div>
+                <div class="product-info">
+                  <div>
+                    <span>classic unisex tee</span>
+                    <span>(1)</span>
+                  </div>
+                  <div>
+                    <span>green</span>
+                    <span>S</span>
+                  </div>
+                </div>
+                <div class="product-price">
+                  <span>$27.00</span>
+                </div>
+              </div>
+            </div>
+            <div class="shipping-cost">
+              <span>shipping</span>
+              <span>$18.99</span>
+            </div>
+            <div class="total-cost">
+              <span>total</span>
+              <span>$87.99</span>
+            </div>
+          </section>
+          <div class="section-promotions">
+            <div class="promotions">
+              <label for="promotion-code">promotion code</label>
+              <input
+                type="text"
+                name="promotion-code"
+                id=""
+                class="promotion-code"
+                placeholder="have a code? enter it here"
+              />
+              <button>apply</button>
+            </div>
+            <div class="gifts">
+              <label for="gift-card">gift card</label>
+              <input
+                type="text"
+                name="gift-card"
+                id=""
+                class="gift-card"
+                placeholder="enter your code here"
+              />
+              <button>apply</button>
+            </div>
+          </div>
+        </div>
+        <div class="payment-info"></div>
+      </section>
+    </main>
   </body>
 </html>
