@@ -160,23 +160,30 @@ body {
 
 /* MAIN */
 
+main {
+  background-color: #f5f8fc;
+  padding: 3.2rem 9.6rem 3.2rem 9.6rem;
+  display: grid;
+  gap: 2.4rem;
+}
+
 .order {
   display: grid;
   grid-template-columns: 3fr 2fr;
   column-gap: 4.8rem;
   row-gap: 2.4rem;
-  padding: 3.2rem 9.6rem 3.2rem 9.6rem;
-  background-color: #f5f8fc;
 }
 
 .shipping-info,
-.order-summary {
+.order-summary,
+.payment-info {
   background-color: #fff;
   border-radius: 1.6rem;
   border: 1px solid #eaeff7;
 }
 
-.shipping-info {
+.shipping-info,
+.payment-info {
   padding: 4.8rem;
   display: grid;
   gap: 2.4rem;
@@ -309,4 +316,50 @@ body {
 .promotions label,
 .gifts label {
   grid-column: 1 / -1;
+}
+
+.payment-heading {
+  display: flex;
+  align-items: center;
+  gap: 1.2rem;
+}
+
+.payment-form {
+  display: grid;
+  gap: 1rem;
+}
+
+.section-card-number,
+.card-sec {
+  display: grid;
+  gap: 0.5rem;
+}
+
+.section-card-info {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+}
+
+.card-date {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+}
+
+.card-expiration-label {
+  grid-column: 1 / -1;
+}
+
+.place-order-form {
+  display: grid;
+  row-gap: 1rem;
+}
+
+.place-order-form div {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.order-btn {
+  width: fit-content;
 }

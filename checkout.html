@@ -56,8 +56,8 @@
 
     <!-- Main -->
     <main>
-      <section class="order">
-        <div class="shipping-info">
+      <div class="order">
+        <section class="shipping-info">
           <h3>Shipping information</h3>
           <form action="" class="shipping-form">
             <div class="section-name">
@@ -166,10 +166,10 @@
               <span>Billing address is same as shipping</span>
             </div>
           </form>
-        </div>
+        </section>
 
         <!-- ORDER SUMMARY -->
-        <div class="order-summary">
+        <section class="order-summary">
           <h3 class="summary-heading">order summary</h3>
           <section class="section-summary">
             <div class="brand-name">
@@ -253,9 +253,80 @@
               <button>apply</button>
             </div>
           </div>
-        </div>
-        <div class="payment-info"></div>
-      </section>
+        </section>
+
+        <!-- PAYEMNT SECTION -->
+        <section class="payment-info">
+          <div class="payment-heading">
+            <h3>payment information</h3>
+            <span><i class="ph-light ph-lock-key"></i></span>
+          </div>
+          <div class="paymment-body">
+            <form action="" class="payment-form">
+              <div class="section-card-number">
+                <label for="card-number">creedit card number</label>
+                <input
+                  type="number"
+                  name="card-number"
+                  class="card-number"
+                  placeholder="•••• •••• •••• ••••"
+                />
+              </div>
+              <div class="section-card-info">
+                <div class="card-date">
+                  <label for="card-expiration" class="card-expiration-label"
+                    >expiration date</label
+                  >
+                  <select
+                    name="month"
+                    id="card-expiration"
+                    class="card-expiration-month"
+                  >
+                    <option value="month-1">01</option>
+                  </select>
+                  <select name="year" id="" class="card-expiration-year">
+                    <option value="year-2025">2025</option>
+                  </select>
+                </div>
+                <div class="card-sec">
+                  <label for="sec-code">security code</label>
+                  <input
+                    type="tel"
+                    name="sec-code"
+                    id="sec-code"
+                    class="sec-code"
+                    placeholder="••••"
+                  />
+                </div>
+              </div>
+            </form>
+          </div>
+        </section>
+      </div>
+
+      <!-- PLACE ORDER -->
+      <div class="place-order">
+        <form action="" class="place-order-form">
+          <div>
+            <input type="checkbox" name="" id="" />
+            <span>I would like to know more about selling with Stylesole</span>
+          </div>
+          <div>
+            <input type="checkbox" name="" id="" />
+            <span
+              >I agree to Stylesole’s <a href="#">Terms and Conditions</a> and
+              <a href="#">Privacy Policy</a>.</span
+            >
+          </div>
+          <div>
+            <input type="checkbox" name="" id="" />
+            <span
+              >Share my full name and contact information with the seller</span
+            >
+          </div>
+          <button class="order-btn">place your order</button>
+        </form>
+      </div>
     </main>
   </body>
 </html>
