@@ -1,3 +1,5 @@
+import { STORAGE_KEY } from "./config";
+
 import style1 from "url:../../img/style-1.webp";
 import style2 from "url:../../img/style-2.webp";
 import style3 from "url:../../img/style-3.webp";
@@ -57,8 +59,38 @@ const products = [
   },
 ];
 
+// Helper function to calculate total price
+const calculateTotalPrice = (carts) => {
+  const totalPrice = carts
+    .reduce((total, item) => total + item.price, 0)
+    .toFixed(2);
+  return totalPrice;
+};
+
 const state = {
-  carts: JSON.parse(localStorage.getItem("cart")) || [], // Load from localStorage on init
+  carts: (() => {
+    try {
+      return JSON.parse(localStorage.getItem(STORAGE_KEY))?.carts || [];
+    } catch (e) {
+      console.error("Error parsing localStorage data:", e);
+      return [];
+    }
+  })(),
+  totalPrice: (() => {
+    try {
+      const storedData = JSON.parse(localStorage.getItem(STORAGE_KEY));
+      return (
+        storedData?.totalPrice ||
+        calculateTotalPrice(
+          JSON.parse(localStorage.getItem(STORAGE_KEY))?.carts || []
+        )
+      );
+    } catch (e) {
+      console.error("Error parsing localStorage data:", e);
+      return "0.00";
+    }
+  })(),
+  shipping: 18.99,
 };
 
 export const addToCart = function (productInfo) {
@@ -71,7 +103,8 @@ export const addToCart = function (productInfo) {
     color: productInfo.colorId,
   };
   state.carts.push(cartItem);
-  localStorage.setItem("cart", JSON.stringify(state.carts)); // Save to localStorage
+  state.totalPrice = calculateTotalPrice(state.carts);
+  setLocalStorage();
   return cartItem;
 };
 
@@ -83,10 +116,19 @@ export const cartState = function () {
   return state.carts;
 };
 
+export const getTotalPrice = function () {
+  return state.totalPrice;
+};
+
+export const shipping = function () {
+  return state.shipping;
+};
+
 export const removeFromCart = function (index) {
   if (index >= 0 && index < state.carts.length) {
     state.carts.splice(index, 1); // Remove item at index
-    localStorage.setItem("cart", JSON.stringify(state.carts)); // Update localStorage
+    state.totalPrice = calculateTotalPrice(state.carts);
+    setLocalStorage();
   }
 };
 
@@ -98,4 +140,32 @@ export const productPrice = function (productId) {
 export const productImage = function (productId) {
   const product = products.find((item) => item.id === productId);
   return product ? product.bigImage_path : null;
+};
+
+export const setLocalStorage = function () {
+  localStorage.setItem(
+    STORAGE_KEY,
+    JSON.stringify({
+      carts: state.carts,
+      totalPrice: state.totalPrice,
+      shipping: state.shipping,
+    })
+  );
+};
+
+export const getLocalStorage = function () {
+  try {
+    const storedData = JSON.parse(localStorage.getItem(STORAGE_KEY));
+    if (storedData && Array.isArray(storedData.carts)) {
+      state.carts = storedData.carts;
+      state.totalPrice =
+        storedData.totalPrice || calculateTotalPrice(storedData.carts);
+      state.shipping = storedData.shipping;
+    }
+  } catch (e) {
+    console.error("Error parsing localStorage data:", e);
+    state.carts = [];
+    state.totalPrice = "0.00";
+    state.shipping = 18.99;
+  }
 };

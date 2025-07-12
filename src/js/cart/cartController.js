@@ -1,4 +1,4 @@
-import view from "./view";
+import view from "./cartView";
 import * as model from "../main/model";
 
 const controlCartState = function () {

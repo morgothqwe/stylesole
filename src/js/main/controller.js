@@ -28,13 +28,14 @@ const controlImage = function (productId) {
   }
 };
 
-// New combined handler function
 const controlProductSelection = function (productId) {
   controlPrice(productId); // Call price handler
   controlImage(productId); // Call image handler
 };
 
 const init = function () {
+  const cartQuantity = model.cartQuantity();
+  view.renderCartItems(cartQuantity);
   view.addHandlerAddToCart(controlAddToCart);
   view.addHandlerProductSelection(controlProductSelection); // Pass single handler
 };
