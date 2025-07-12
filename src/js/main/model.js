@@ -1,4 +1,5 @@
 import { STORAGE_KEY } from "./config";
+import { GIFT_CODE } from "../checkout/checkoutConfig";
 
 import style1 from "url:../../img/style-1.webp";
 import style2 from "url:../../img/style-2.webp";
@@ -90,7 +91,15 @@ const state = {
       return "0.00";
     }
   })(),
-  shipping: 18.99,
+  shipping: (() => {
+    try {
+      const storedData = JSON.parse(localStorage.getItem(STORAGE_KEY));
+      return storedData?.shipping || 18.99;
+    } catch (e) {
+      console.error("Error parsing localStorage data:", e);
+      return 18.99;
+    }
+  })(),
 };
 
 export const addToCart = function (productInfo) {
@@ -140,6 +149,12 @@ export const productPrice = function (productId) {
 export const productImage = function (productId) {
   const product = products.find((item) => item.id === productId);
   return product ? product.bigImage_path : null;
+};
+
+export const addGiftCode = function (giftCode) {
+  if (giftCode === GIFT_CODE) {
+    return state.totalPrice * 0.1 - state.totalPrice;
+  } else return;
 };
 
 export const setLocalStorage = function () {

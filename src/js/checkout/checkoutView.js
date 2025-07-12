@@ -1,6 +1,15 @@
-import { shipping } from "../main/model";
-
 class View {
+  addHandlerGiftCode(handler) {
+    document.querySelector(".gift-btn").addEventListener("click", (e) => {
+      e.preventDefault();
+
+      const giftCode = document.querySelector(".gift-card").textContent;
+      if (!giftCode) return;
+
+      handler(giftCode);
+    });
+  }
+
   renderCartItems(items) {
     document.querySelector(".item-number").textContent = items;
   }
