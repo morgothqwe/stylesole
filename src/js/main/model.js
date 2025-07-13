@@ -100,6 +100,7 @@ const state = {
       return 18.99;
     }
   })(),
+  isDiscount: false,
 };
 
 export const addToCart = function (productInfo) {
@@ -153,7 +154,8 @@ export const productImage = function (productId) {
 
 export const addGiftCode = function (giftCode) {
   if (giftCode === GIFT_CODE) {
-    return state.totalPrice * 0.1 - state.totalPrice;
+    state.isDiscount = true;
+    return state.totalPrice - state.totalPrice * 0.1;
   } else return;
 };
 

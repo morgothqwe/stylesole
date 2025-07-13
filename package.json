@@ -23,5 +23,8 @@
   "bugs": {
     "url": "https://github.com/keiwan/e-ecommerce-stylesole/issues"
   },
-  "homepage": "https://github.com/keiwan/e-ecommerce-stylesole#readme"
+  "homepage": "https://github.com/keiwan/e-ecommerce-stylesole#readme",
+  "dependencies": {
+    "pristinejs": "^1.1.0"
+  }
 }

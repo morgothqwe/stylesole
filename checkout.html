@@ -11,6 +11,7 @@
     />
 
     <link rel="stylesheet" href="./src/css/checkout.css" />
+
     <script
       type="module"
       src="./src/js/checkout/checkoutController.js"
@@ -64,107 +65,178 @@
           <h3>Shipping information</h3>
           <form action="" class="shipping-form">
             <div class="section-name">
-              <label for="full-name">full name</label>
+              <label for="full-name">Full name</label>
               <input
                 type="text"
-                name="full-name"
-                id=""
                 class="full-name"
-                placeholder="Your first name and last name"
+                id="full-name"
+                name="full-name"
+                required
+                aria-describedby="full-name-error"
               />
+              <div
+                class="error-message"
+                id="full-name-error"
+                role="alert"
+                style="display: none"
+              ></div>
             </div>
+
             <div class="section-address">
               <div>
-                <label for="street-address">street address</label>
+                <label for="street-address">Street address</label>
                 <input
                   type="text"
-                  name="street-address"
-                  id=""
                   class="street-address"
-                  placeholder="123 example address"
+                  id="street-address"
+                  name="street-address"
+                  required
+                  aria-describedby="street-address-error"
                 />
+                <div
+                  class="error-message"
+                  id="street-address-error"
+                  role="alert"
+                  style="display: none"
+                ></div>
               </div>
-
               <div>
-                <label for="apt-suite">apt/suite</label>
+                <label for="apt-suite">Apt/Suite</label>
                 <input
                   type="text"
-                  name="apt-suite"
-                  id=""
                   class="apt-suite"
-                  placeholder="Apt/Suite"
+                  id="apt-suite"
+                  name="apt-suite"
+                  aria-describedby="apt-suite-error"
                 />
+                <div
+                  class="error-message"
+                  id="apt-suite-error"
+                  role="alert"
+                  style="display: none"
+                ></div>
               </div>
             </div>
+
             <div class="section-city">
               <div>
-                <label for="city">city</label>
+                <label for="city">City</label>
                 <input
                   type="text"
-                  name="city"
-                  id=""
                   class="city"
-                  placeholder="City"
+                  id="city"
+                  name="city"
+                  required
+                  aria-describedby="city-error"
                 />
+                <div
+                  class="error-message"
+                  id="city-error"
+                  role="alert"
+                  style="display: none"
+                ></div>
               </div>
-
               <div>
-                <label for="state">state</label>
+                <label for="state">State</label>
                 <input
                   type="text"
-                  name="state"
-                  id=""
                   class="state"
-                  placeholder="State/Province"
+                  id="state"
+                  name="state"
+                  required
+                  aria-describedby="state-error"
                 />
+                <div
+                  class="error-message"
+                  id="state-error"
+                  role="alert"
+                  style="display: none"
+                ></div>
               </div>
-
               <div>
-                <label for="zip-code">zip code</label>
+                <label for="zip-code">Zip code</label>
                 <input
                   type="text"
-                  name="zip-code"
-                  id=""
                   class="zip-code"
-                  placeholder="Zip code"
+                  id="zip-code"
+                  name="zip-code"
+                  required
+                  aria-describedby="zip-code-error"
                 />
+                <div
+                  class="error-message"
+                  id="zip-code-error"
+                  role="alert"
+                  style="display: none"
+                ></div>
               </div>
             </div>
+
             <div class="section-country">
-              <label for="country">country</label>
-              <select name="country" id="" class="country">
+              <label for="country">Country</label>
+              <select
+                class="country"
+                id="country"
+                name="country"
+                required
+                aria-describedby="country-error"
+              >
+                <option value="">Select a country</option>
                 <option value="Iran">Iran</option>
                 <option value="French">French</option>
               </select>
+              <div
+                class="error-message"
+                id="country-error"
+                role="alert"
+                style="display: none"
+              ></div>
             </div>
+
             <div class="section-email">
               <div>
-                <label for="email-address">email address</label>
+                <label for="email-address">Email address</label>
                 <input
                   type="email"
-                  name="email-address"
-                  id=""
                   class="email-address"
-                  placeholder="email@example.com"
+                  id="email-address"
+                  name="email-address"
+                  required
+                  aria-describedby="email-address-error"
                 />
+                <div
+                  class="error-message"
+                  id="email-address-error"
+                  role="alert"
+                  style="display: none"
+                ></div>
               </div>
-
               <div>
-                <label for="mobile-phone">mobile phone</label>
+                <label for="mobile-phone">Mobile phone</label>
                 <input
-                  type="text"
-                  name="mobile-phone"
-                  id=""
+                  type="tel"
                   class="mobile-phone"
+                  id="mobile-phone"
+                  name="mobile-phone"
+                  required
+                  pattern="\d{10}"
+                  aria-describedby="mobile-phone-error"
                 />
+                <div
+                  class="error-message"
+                  id="mobile-phone-error"
+                  role="alert"
+                  style="display: none"
+                ></div>
               </div>
             </div>
+
             <div class="section-billing">
               <input
                 type="checkbox"
-                name="billing-shipping"
-                id=""
-                class="billing-shipping"
+                id="billing-same"
+                name="billing-same"
+                checked
               />
               <span>Billing address is same as shipping</span>
             </div>
@@ -229,39 +301,84 @@
           <div class="paymment-body">
             <form action="" class="payment-form">
               <div class="section-card-number">
-                <label for="card-number">creedit card number</label>
+                <label for="card-number">Credit card number</label>
                 <input
-                  type="number"
-                  name="card-number"
+                  type="text"
                   class="card-number"
-                  placeholder="•••• •••• •••• ••••"
+                  id="card-number"
+                  name="card-number"
+                  required
+                  pattern="\d{16}"
+                  data-pristine-card-number
+                  aria-describedby="card-number-error"
                 />
+                <div
+                  class="error-message"
+                  id="card-number-error"
+                  role="alert"
+                  style="display: none"
+                ></div>
               </div>
               <div class="section-card-info">
                 <div class="card-date">
-                  <label for="card-expiration" class="card-expiration-label"
-                    >expiration date</label
-                  >
+                  <label class="card-expiration-label">Expiration date</label>
                   <select
-                    name="month"
-                    id="card-expiration"
                     class="card-expiration-month"
+                    name="card-expiration-month"
+                    required
+                    data-pristine-expiration-date
+                    aria-describedby="card-expiration-month-error"
                   >
-                    <option value="month-1">01</option>
+                    <option value="">Month</option>
+                    <option value="01">01</option>
+                    <option value="02">02</option>
+                    <!-- Add other months -->
+                    <option value="12">12</option>
                   </select>
-                  <select name="year" id="" class="card-expiration-year">
-                    <option value="year-2025">2025</option>
+                  <select
+                    class="card-expiration-year"
+                    name="card-expiration-year"
+                    required
+                    data-pristine-expiration-date
+                    aria-describedby="card-expiration-year-error"
+                  >
+                    <option value="">Year</option>
+                    <option value="2025">2025</option>
+                    <option value="2026">2026</option>
+                    <!-- Add other years -->
+                    <option value="2030">2030</option>
                   </select>
+                  <div
+                    class="error-message"
+                    id="card-expiration-month-error"
+                    role="alert"
+                    style="display: none"
+                  ></div>
+                  <div
+                    class="error-message"
+                    id="card-expiration-year-error"
+                    role="alert"
+                    style="display: none"
+                  ></div>
                 </div>
                 <div class="card-sec">
-                  <label for="sec-code">security code</label>
+                  <label for="sec-code">Security code</label>
                   <input
-                    type="tel"
-                    name="sec-code"
-                    id="sec-code"
+                    type="text"
                     class="sec-code"
-                    placeholder="••••"
+                    id="sec-code"
+                    name="sec-code"
+                    required
+                    pattern="\d{3,4}"
+                    data-pristine-sec-code
+                    aria-describedby="sec-code-error"
                   />
+                  <div
+                    class="error-message"
+                    id="sec-code-error"
+                    role="alert"
+                    style="display: none"
+                  ></div>
                 </div>
               </div>
             </form>
@@ -277,7 +394,13 @@
             <span>I would like to know more about selling with Stylesole</span>
           </div>
           <div>
-            <input type="checkbox" name="" id="" />
+            <input
+              type="checkbox"
+              class="terms-checkbox"
+              id="terms-checkbox"
+              required
+              aria-describedby="terms-checkbox-error"
+            />
             <span
               >I agree to Stylesole’s <a href="#">Terms and Conditions</a> and
               <a href="#">Privacy Policy</a>.</span
@@ -289,9 +412,18 @@
               >Share my full name and contact information with the seller</span
             >
           </div>
-          <button class="order-btn">place your order</button>
+          <button class="order-btn disabled">place your order</button>
         </form>
       </div>
     </main>
+
+    <!-- Checkout Message -->
+    <div class="checkout-message">
+      <span class="close-message"></span>
+      <div class="message-info">
+        <span class="message-check"></span>
+        <p class="message-text">Order successfully placed</p>
+      </div>
+    </div>
   </body>
 </html>
