@@ -14,19 +14,20 @@ class View {
     }
   }
 
-  _openPopupMessage() {
-    document.querySelector(".added-message").style.display = "grid";
+  _openCheckoutMessage() {
+    document.querySelector(".checkout-message").style.display = "grid";
     document
       .querySelectorAll("main, header")
-      .forEach((el) => el.classList.add("dimmed"));
+      .forEach((el) => (el.style.opacity = 0.6));
   }
 
-  _closePopupMessage() {
+  // After closing checkout, an order with id number should store in model.js. then localstorage get clear and UI also clean
+  _closeCheckoutMessage() {
     document.querySelector(".close-message").addEventListener("click", (e) => {
-      document.querySelector(".added-message").style.display = "none";
+      document.querySelector(".checkout-message").style.display = "none";
       document
         .querySelectorAll("main, header")
-        .forEach((el) => el.classList.remove("dimmed"));
+        .forEach((el) => (el.style.opacity = 1));
     });
   }
 
@@ -84,12 +85,22 @@ class View {
     document.querySelector(".total-price").textContent = `$${+totalPrice}`;
   }
 
+  // Enable or Disable checkout btn
   renderCheckout() {
     if (!this._termsCheckbox || !this._orderBtn) return;
 
     this._orderBtn.disabled = !this._termsCheckbox.checked;
     this._orderBtn.classList.toggle("enabled", this._termsCheckbox.checked);
     this._orderBtn.classList.toggle("disabled", !this._termsCheckbox.checked);
+  }
+
+  renderCheckoutBtn() {
+    this._orderBtn.addEventListener("click", (e) => {
+      e.preventDefault();
+
+      this._openCheckoutMessage();
+      this._closeCheckoutMessage();
+    });
   }
 }
 

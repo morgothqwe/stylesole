@@ -21,13 +21,16 @@ const controlShopping = function () {
   view.renderSelectedItems(items, +totalPrice, shipping);
 };
 
+const controlCheckoutMessage = function () {
+  view.renderCheckoutBtn();
+};
+
 const init = function () {
   controlCartItems();
   controlShopping();
   view.addHandlerGiftCode(controlGiftCode);
   view.renderCheckout();
-  view._openPopupMessage();
-  view._closePopupMessage();
+  controlCheckoutMessage();
 };
 
 init();
