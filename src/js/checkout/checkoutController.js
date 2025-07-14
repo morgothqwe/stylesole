@@ -17,15 +17,21 @@ const controlCartItems = function () {
 
 const controlShopping = function () {
   const items = model.cartState();
+  if (model.isCartEmpty()) {
+    view.renderEmptyCheckout(); // For initial load/refresh with empty cart
+    return;
+  }
   const totalPrice = model.getTotalPrice();
   const shipping = model.shipping();
   view.renderSelectedItems(items, +totalPrice, shipping);
 };
 
 const controlClearCart = function () {
-  model.clearCart(); // Clear model state and local storage
-  view.renderCartItems(0); // Update UI to reflect empty cart
-  view.clearCheckoutUI(); // New method to clear checkout-specific UI
+  model.storeOrderId();
+  const orderId = model.getOrderId(); // New function to get current orderId
+  model.clearCart();
+  view.renderCartItems(0);
+  view.clearCheckoutUI(orderId); // Pass orderId to view
 };
 
 const controlCheckoutMessage = function () {

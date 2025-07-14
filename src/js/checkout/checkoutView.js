@@ -21,15 +21,17 @@ class View {
       .forEach((el) => (el.style.opacity = 0.6));
   }
 
-  // After closing checkout, an order with id number should store in model.js. then localstorage get clear and UI also clean
   addHandlerClearCart(handler) {
-    document.querySelector(".close-message").addEventListener("click", (e) => {
-      this._openCheckoutMessage();
-      handler(); // Call controller to clear cart
-    });
+    document.querySelector(".close-message").addEventListener(
+      "click",
+      (e) => {
+        handler(); // Call controller to clear cart and update UI
+      },
+      { once: true }
+    ); // Prevent multiple listeners
   }
 
-  clearCheckoutUI() {
+  clearCheckoutUI(orderId) {
     document.querySelector(".products-list").replaceChildren();
     document
       .querySelectorAll(".shipping-price, .total-price")
@@ -39,6 +41,21 @@ class View {
     document
       .querySelectorAll("main, header")
       .forEach((el) => (el.style.opacity = 1));
+    // Update checkout message with orderId
+    const messageEl = document.querySelector(".checkout-message");
+    if (orderId && messageEl) {
+      messageEl.querySelector(
+        ".message-text"
+      ).textContent = `Order ${orderId} successfully placed`;
+    }
+  }
+
+  renderEmptyCheckout() {
+    document.querySelector(".products-list").replaceChildren();
+    document
+      .querySelectorAll(".shipping-price, .total-price")
+      .forEach((el) => (el.textContent = ""));
+    document.querySelector(".item-number").textContent = "0";
   }
 
   addHandlerGiftCode(handler) {

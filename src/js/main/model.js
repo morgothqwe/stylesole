@@ -76,7 +76,7 @@ const state = {
       );
     } catch (e) {
       console.error("Error parsing localStorage data:", e);
-      return [];
+      return Date.now(); // Return a number, not []
     }
   })(),
   carts: (() => {
@@ -110,7 +110,29 @@ const state = {
       return 18.99;
     }
   })(),
+  orders: (() => {
+    try {
+      return JSON.parse(localStorage.getItem(STORAGE_KEY))?.orders || [];
+    } catch (e) {
+      console.error("Error parsing localStorage data:", e);
+      return [];
+    }
+  })(),
   isDiscount: false,
+};
+
+export const storeOrderId = function () {
+  const order = {
+    id: Date.now(),
+    items: [...state.carts], // Copy current cart items
+    totalPrice: state.totalPrice,
+    shipping: state.shipping,
+    isDiscount: state.isDiscount,
+    timestamp: new Date().toISOString(), // Optional: store order date
+  };
+  state.orders.push(order); // Add to orders array
+  state.orderId = order.id; // Update current orderId
+  setLocalStorage();
 };
 
 export const addToCart = function (productInfo) {
@@ -144,6 +166,10 @@ export const shipping = function () {
   return state.shipping;
 };
 
+export const isCartEmpty = function () {
+  return state.carts.length === 0;
+};
+
 export const removeFromCart = function (index) {
   if (index >= 0 && index < state.carts.length) {
     state.carts.splice(index, 1); // Remove item at index
@@ -170,6 +196,15 @@ export const addGiftCode = function (giftCode) {
   } else return;
 };
 
+// to retrieve the order history for potential UI display
+export const getOrderHistory = function () {
+  return state.orders;
+};
+
+export const getOrderId = function () {
+  return state.orderId;
+};
+
 export const setLocalStorage = function () {
   localStorage.setItem(
     STORAGE_KEY,
@@ -177,6 +212,8 @@ export const setLocalStorage = function () {
       carts: state.carts,
       totalPrice: state.totalPrice,
       shipping: state.shipping,
+      orderId: state.orderId,
+      orders: state.orders,
     })
   );
 };
@@ -203,7 +240,8 @@ export const clearCart = function () {
   state.totalPrice = "0.00";
   state.shipping = 18.99;
   state.isDiscount = false;
-  clearLocalStorage();
+  // clearLocalStorage();
+  setLocalStorage();
 };
 
 export const clearLocalStorage = function () {
