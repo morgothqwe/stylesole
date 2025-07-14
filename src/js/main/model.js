@@ -1,3 +1,4 @@
+import { v4 as uuidv4 } from "uuid";
 import { STORAGE_KEY } from "./config";
 import { GIFT_CODE } from "../checkout/checkoutConfig";
 
@@ -71,12 +72,11 @@ const calculateTotalPrice = (carts) => {
 const state = {
   orderId: (() => {
     try {
-      return (
-        JSON.parse(localStorage.getItem(STORAGE_KEY))?.orderId || Date.now()
-      );
+      const storedData = JSON.parse(localStorage.getItem(STORAGE_KEY));
+      return storedData?.orderId || null; // Default to null if no orderId
     } catch (e) {
       console.error("Error parsing localStorage data:", e);
-      return Date.now(); // Return a number, not []
+      return null; // Default to null on error
     }
   })(),
   carts: (() => {
@@ -123,7 +123,7 @@ const state = {
 
 export const storeOrderId = function () {
   const order = {
-    id: Date.now(),
+    id: uuidv4(),
     items: [...state.carts], // Copy current cart items
     totalPrice: state.totalPrice,
     shipping: state.shipping,
@@ -240,7 +240,6 @@ export const clearCart = function () {
   state.totalPrice = "0.00";
   state.shipping = 18.99;
   state.isDiscount = false;
-  // clearLocalStorage();
   setLocalStorage();
 };
 

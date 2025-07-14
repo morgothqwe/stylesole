@@ -25,6 +25,7 @@
   },
   "homepage": "https://github.com/keiwan/e-ecommerce-stylesole#readme",
   "dependencies": {
-    "pristinejs": "^1.1.0"
+    "pristinejs": "^1.1.0",
+    "uuid": "^11.1.0"
   }
 }
