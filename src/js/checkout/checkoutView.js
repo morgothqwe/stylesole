@@ -22,13 +22,23 @@ class View {
   }
 
   // After closing checkout, an order with id number should store in model.js. then localstorage get clear and UI also clean
-  _closeCheckoutMessage() {
+  addHandlerClearCart(handler) {
     document.querySelector(".close-message").addEventListener("click", (e) => {
-      document.querySelector(".checkout-message").style.display = "none";
-      document
-        .querySelectorAll("main, header")
-        .forEach((el) => (el.style.opacity = 1));
+      this._openCheckoutMessage();
+      handler(); // Call controller to clear cart
     });
+  }
+
+  clearCheckoutUI() {
+    document.querySelector(".products-list").replaceChildren();
+    document
+      .querySelectorAll(".shipping-price, .total-price")
+      .forEach((el) => (el.textContent = ""));
+    document.querySelector(".item-number").textContent = "0";
+    document.querySelector(".checkout-message").style.display = "none";
+    document
+      .querySelectorAll("main, header")
+      .forEach((el) => (el.style.opacity = 1));
   }
 
   addHandlerGiftCode(handler) {
@@ -49,7 +59,7 @@ class View {
     const markups = items
       .map((item) => {
         return `
-      <div class="product">
+        <div class="product">
           <div class="product-img">
             <img src="${item.image_path}" alt="${item.name}" class="image" />
           </div>
@@ -81,8 +91,10 @@ class View {
     ).toFixed(2)}`;
   }
 
-  renderGiftCode(totalPrice) {
-    document.querySelector(".total-price").textContent = `$${+totalPrice}`;
+  renderGiftCode(totalPrice, shipping) {
+    document.querySelector(".total-price").textContent = `$${
+      +totalPrice + shipping
+    }`;
   }
 
   // Enable or Disable checkout btn
@@ -97,9 +109,7 @@ class View {
   renderCheckoutBtn() {
     this._orderBtn.addEventListener("click", (e) => {
       e.preventDefault();
-
       this._openCheckoutMessage();
-      this._closeCheckoutMessage();
     });
   }
 }

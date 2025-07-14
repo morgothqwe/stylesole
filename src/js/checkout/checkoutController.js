@@ -5,8 +5,9 @@ const controlGiftCode = function (giftCode) {
   const newCost = model.addGiftCode(giftCode);
   if (!Number.isFinite(newCost)) return;
   const totalPrice = newCost;
+  const shipping = model.shipping();
 
-  view.renderGiftCode(totalPrice);
+  view.renderGiftCode(totalPrice, shipping);
 };
 
 const controlCartItems = function () {
@@ -21,8 +22,15 @@ const controlShopping = function () {
   view.renderSelectedItems(items, +totalPrice, shipping);
 };
 
+const controlClearCart = function () {
+  model.clearCart(); // Clear model state and local storage
+  view.renderCartItems(0); // Update UI to reflect empty cart
+  view.clearCheckoutUI(); // New method to clear checkout-specific UI
+};
+
 const controlCheckoutMessage = function () {
   view.renderCheckoutBtn();
+  view.addHandlerClearCart(controlClearCart); // Add handler for clearing cart
 };
 
 const init = function () {

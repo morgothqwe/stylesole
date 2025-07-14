@@ -69,6 +69,16 @@ const calculateTotalPrice = (carts) => {
 };
 
 const state = {
+  orderId: (() => {
+    try {
+      return (
+        JSON.parse(localStorage.getItem(STORAGE_KEY))?.orderId || Date.now()
+      );
+    } catch (e) {
+      console.error("Error parsing localStorage data:", e);
+      return [];
+    }
+  })(),
   carts: (() => {
     try {
       return JSON.parse(localStorage.getItem(STORAGE_KEY))?.carts || [];
@@ -138,6 +148,7 @@ export const removeFromCart = function (index) {
   if (index >= 0 && index < state.carts.length) {
     state.carts.splice(index, 1); // Remove item at index
     state.totalPrice = calculateTotalPrice(state.carts);
+    console.log(state);
     setLocalStorage();
   }
 };
@@ -153,7 +164,7 @@ export const productImage = function (productId) {
 };
 
 export const addGiftCode = function (giftCode) {
-  if (giftCode === GIFT_CODE) {
+  if (giftCode === GIFT_CODE && state.carts.length !== 0) {
     state.isDiscount = true;
     return state.totalPrice - state.totalPrice * 0.1;
   } else return;
@@ -185,4 +196,16 @@ export const getLocalStorage = function () {
     state.totalPrice = "0.00";
     state.shipping = 18.99;
   }
+};
+
+export const clearCart = function () {
+  state.carts = [];
+  state.totalPrice = "0.00";
+  state.shipping = 18.99;
+  state.isDiscount = false;
+  clearLocalStorage();
+};
+
+export const clearLocalStorage = function () {
+  localStorage.removeItem(STORAGE_KEY);
 };
