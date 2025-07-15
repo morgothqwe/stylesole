@@ -2,6 +2,12 @@ class View {
   constructor() {
     this._termsCheckbox = document.querySelector(".terms-checkbox");
     this._orderBtn = document.querySelector(".order-btn");
+    this._productsList = document.querySelector(".products-list");
+    this._shippingPrice = document.querySelector(".shipping-price");
+    this._totalPrice = document.querySelector(".total-price");
+    this._itemNumber = document.querySelector(".item-number");
+    this._checkoutMessage = document.querySelector(".checkout-message");
+    this._mainHeader = document.querySelectorAll("main, header");
     this._bindEvents();
   }
 
@@ -14,7 +20,7 @@ class View {
   }
 
   _openCheckoutMessage() {
-    document.querySelector(".checkout-message").style.display = "grid";
+    this._checkoutMessage.style.display = "grid";
     document
       .querySelectorAll("main, header")
       .forEach((el) => (el.style.opacity = 0.6));
@@ -43,7 +49,7 @@ class View {
   }
 
   showCheckoutMessage(orderId) {
-    const messageEl = document.querySelector(".checkout-message");
+    const messageEl = this._checkoutMessage;
     if (orderId && messageEl) {
       const shortOrderId = orderId.slice(0, 8);
       messageEl.querySelector(
@@ -53,29 +59,24 @@ class View {
     this._openCheckoutMessage();
   }
 
+  clearCartUI() {
+    this._productsList.replaceChildren();
+    this._shippingPrice.textContent = "";
+    this._totalPrice.textContent = "";
+    this._itemNumber.textContent = "0";
+    this._checkoutMessage.style.display = "none";
+    this._mainHeader.forEach((el) => (el.style.opacity = 1));
+    this._termsCheckbox.checked = false;
+    this._orderBtn.classList.add("disabled");
+    this._orderBtn.disabled = true;
+  }
+
   clearCheckoutUI() {
-    document.querySelector(".products-list").replaceChildren();
-    document
-      .querySelectorAll(".shipping-price, .total-price")
-      .forEach((el) => (el.textContent = ""));
-    document.querySelector(".item-number").textContent = "0";
-    document.querySelector(".checkout-message").style.display = "none";
-    document
-      .querySelectorAll("main, header")
-      .forEach((el) => (el.style.opacity = 1));
-    this._termsCheckbox.checked = !this._termsCheckbox.checked;
-    this._orderBtn.classList.toggle(
-      "disabled",
-      !this._termsCheckbox.checked || isCartEmpty
-    );
+    this.clearCartUI();
   }
 
   renderEmptyCheckout() {
-    document.querySelector(".products-list").replaceChildren();
-    document
-      .querySelectorAll(".shipping-price, .total-price")
-      .forEach((el) => (el.textContent = ""));
-    document.querySelector(".item-number").textContent = "0";
+    this.clearCartUI();
   }
 
   addHandlerGiftCode(handler) {
@@ -88,65 +89,47 @@ class View {
   }
 
   renderCartItems(items) {
-    document.querySelector(".item-number").textContent = items;
+    this._itemNumber.textContent = items;
+  }
+
+  _generateProductMarkup(item) {
+    return `
+    <div class="product">
+      <div class="product-img">
+        <img src="${item.image_path}" alt="${item.name}" class="image" />
+      </div>
+      <div class="product-info">
+        <div>
+          <span>${item.name}</span>
+          <span>(1)</span>
+        </div>
+        <div>
+          <span>${item.color}</span>
+          <span class="product-size">${item.size}</span>
+        </div>
+      </div>
+      <div class="product-price">
+        <span>$${item.price.toFixed(2)}</span>
+      </div>
+    </div>
+  `;
   }
 
   renderSelectedItems(items, totalPrice, shipping) {
-    const markups = items
-      .map((item) => {
-        return `
-        <div class="product">
-          <div class="product-img">
-            <img src="${item.image_path}" alt="${item.name}" class="image" />
-          </div>
-          <div class="product-info">
-            <div>
-              <span>${item.name}</span>
-              <span>(1)</span>
-            </div>
-            <div>
-              <span>${item.color}</span>
-              <span class="product-size">${item.size}</span>
-            </div>
-          </div>
-          <div class="product-price">
-            <span>$${item.price.toFixed(2)}</span>
-          </div>
-        </div>
-    `;
-      })
-      .join("");
-
-    document
-      .querySelector(".products-list")
-      .insertAdjacentHTML("afterbegin", markups);
-
-    document.querySelector(".shipping-price").textContent = `$${shipping}`;
-    document.querySelector(".total-price").textContent = `$${(
-      totalPrice + shipping
-    ).toFixed(2)}`;
+    const markups = items.map(this._generateProductMarkup).join("");
+    this._productsList.insertAdjacentHTML("afterbegin", markups);
+    this._shippingPrice.textContent = `$${shipping.toFixed(2)}`;
+    this._totalPrice.textContent = `$${(totalPrice + shipping).toFixed(2)}`;
   }
 
   renderGiftCode(totalPrice, shipping) {
-    document.querySelector(".total-price").textContent = `$${
-      +totalPrice + shipping
-    }`;
+    this._totalPrice.textContent = `$${+totalPrice + shipping}`;
   }
 
   renderCheckout() {
     if (!this._termsCheckbox || !this._orderBtn) return;
-
-    const isCartEmpty =
-      document.querySelector(".item-number").textContent === "0";
+    const isCartEmpty = this._itemNumber.textContent === "0";
     this._orderBtn.disabled = !this._termsCheckbox.checked || isCartEmpty;
-    this._orderBtn.classList.toggle(
-      "enabled",
-      this._termsCheckbox.checked && !isCartEmpty
-    );
-    this._orderBtn.classList.toggle(
-      "disabled",
-      !this._termsCheckbox.checked || isCartEmpty
-    );
   }
 }
 

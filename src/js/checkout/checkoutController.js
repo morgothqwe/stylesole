@@ -3,22 +3,15 @@ import * as model from "../main/model";
 
 const controlGiftCode = function (giftCode) {
   const newCost = model.addGiftCode(giftCode);
-  if (!Number.isFinite(newCost)) return;
-  const totalPrice = newCost;
-  const shipping = model.shipping();
-
-  view.renderGiftCode(totalPrice, shipping);
-};
-
-const controlCartItems = function () {
-  const storedCarts = model.cartQuantity();
-  view.renderCartItems(storedCarts);
+  if (!newCost) return;
+  view.renderGiftCode(+newCost, model.shipping());
 };
 
 const controlShopping = function () {
   const items = model.cartState();
+  view.renderCartItems(items.length); // Update cart quantity
   if (model.isCartEmpty()) {
-    view.renderEmptyCheckout(); // For initial load/refresh with empty cart
+    view.renderEmptyCheckout();
     return;
   }
   const totalPrice = model.getTotalPrice();
@@ -32,11 +25,6 @@ const controlClearCart = function () {
   view.clearCheckoutUI(); // No need to pass orderId
 };
 
-const controlCheckoutMessage = function () {
-  view.addHandlerCheckoutBtn(controlCheckout); // New handler
-  view.addHandlerClearCart(controlClearCart);
-};
-
 const controlCheckout = function () {
   if (model.isCartEmpty()) return; // Prevent checkout with empty cart
   model.storeOrderId(); // Generate and save UUID
@@ -45,11 +33,11 @@ const controlCheckout = function () {
 };
 
 const init = function () {
-  controlCartItems();
   controlShopping();
   view.addHandlerGiftCode(controlGiftCode);
-  view.renderCheckout();
-  controlCheckoutMessage();
+  view.renderCheckout(); // check if its necessary or not
+  view.addHandlerCheckoutBtn(controlCheckout);
+  view.addHandlerClearCart(controlClearCart);
 };
 
 init();
