@@ -1,6 +1,6 @@
 import { v4 as uuidv4 } from "uuid";
 import { STORAGE_KEY } from "./config";
-import { GIFT_CODE } from "../checkout/checkoutConfig";
+import { GIFT_CODE, DEFAULT_SHIPPING } from "../checkout/checkoutConfig";
 
 import style1 from "url:../../img/style-1.webp";
 import style2 from "url:../../img/style-2.webp";
@@ -69,55 +69,36 @@ const calculateTotalPrice = (carts) => {
   return totalPrice;
 };
 
+const findProduct = (productId) => products.find((pd) => pd.id === productId);
+
+const getStoredData = () => {
+  try {
+    const data = JSON.parse(localStorage.getItem(STORAGE_KEY)) || {};
+    return {
+      orderId: data.orderId || null,
+      carts: data.carts || [],
+      totalPrice: data.totalPrice || calculateTotalPrice(data.carts || []),
+      shipping: data.shipping || DEFAULT_SHIPPING,
+      orders: data.orders || [],
+    };
+  } catch (e) {
+    console.error("Error parsing localStorage data:", e);
+    return {
+      orderId: null,
+      carts: [],
+      totalPrice: "0.00",
+      shipping: DEFAULT_SHIPPING,
+      orders: [],
+    };
+  }
+};
+
 const state = {
-  orderId: (() => {
-    try {
-      const storedData = JSON.parse(localStorage.getItem(STORAGE_KEY));
-      return storedData?.orderId || null; // Default to null if no orderId
-    } catch (e) {
-      console.error("Error parsing localStorage data:", e);
-      return null; // Default to null on error
-    }
-  })(),
-  carts: (() => {
-    try {
-      return JSON.parse(localStorage.getItem(STORAGE_KEY))?.carts || [];
-    } catch (e) {
-      console.error("Error parsing localStorage data:", e);
-      return [];
-    }
-  })(),
-  totalPrice: (() => {
-    try {
-      const storedData = JSON.parse(localStorage.getItem(STORAGE_KEY));
-      return (
-        storedData?.totalPrice ||
-        calculateTotalPrice(
-          JSON.parse(localStorage.getItem(STORAGE_KEY))?.carts || []
-        )
-      );
-    } catch (e) {
-      console.error("Error parsing localStorage data:", e);
-      return "0.00";
-    }
-  })(),
-  shipping: (() => {
-    try {
-      const storedData = JSON.parse(localStorage.getItem(STORAGE_KEY));
-      return storedData?.shipping || 18.99;
-    } catch (e) {
-      console.error("Error parsing localStorage data:", e);
-      return 18.99;
-    }
-  })(),
-  orders: (() => {
-    try {
-      return JSON.parse(localStorage.getItem(STORAGE_KEY))?.orders || [];
-    } catch (e) {
-      console.error("Error parsing localStorage data:", e);
-      return [];
-    }
-  })(),
+  orderId: getStoredData().orderId,
+  carts: getStoredData().carts,
+  totalPrice: getStoredData().totalPrice,
+  shipping: getStoredData().shipping,
+  orders: getStoredData().orders,
   isDiscount: false,
 };
 
@@ -136,7 +117,7 @@ export const storeOrderId = function () {
 };
 
 export const addToCart = function (productInfo) {
-  const product = products.find((pd) => pd.id === productInfo.productId);
+  const product = findProduct(productInfo);
   if (!product) return;
 
   const cartItem = {
@@ -174,26 +155,24 @@ export const removeFromCart = function (index) {
   if (index >= 0 && index < state.carts.length) {
     state.carts.splice(index, 1); // Remove item at index
     state.totalPrice = calculateTotalPrice(state.carts);
-    console.log(state);
     setLocalStorage();
   }
 };
 
-export const productPrice = function (productId) {
-  const product = products.find((item) => item.id === productId);
-  return product ? product.price : null;
-};
+// export const productPrice = function (productId) {
+//   const product = products.find((item) => item.id === productId);
+//   return product ? product.price : null;
+// };
 
-export const productImage = function (productId) {
-  const product = products.find((item) => item.id === productId);
-  return product ? product.bigImage_path : null;
-};
+// export const productImage = function (productId) {
+//   const product = products.find((item) => item.id === productId);
+//   return product ? product.bigImage_path : null;
+// };
 
 export const addGiftCode = function (giftCode) {
-  if (giftCode === GIFT_CODE && state.carts.length !== 0) {
-    state.isDiscount = true;
-    return state.totalPrice - state.totalPrice * 0.1;
-  } else return;
+  if (giftCode !== GIFT_CODE) return null;
+  state.isDiscount = true;
+  return (state.totalPrice * 0.9).toFixed(2); // 10% discount
 };
 
 // to retrieve the order history for potential UI display
@@ -206,43 +185,34 @@ export const getOrderId = function () {
 };
 
 export const setLocalStorage = function () {
-  localStorage.setItem(
-    STORAGE_KEY,
-    JSON.stringify({
-      carts: state.carts,
-      totalPrice: state.totalPrice,
-      shipping: state.shipping,
-      orderId: state.orderId,
-      orders: state.orders,
-    })
-  );
+  localStorage.setItem(STORAGE_KEY, JSON.stringify({ ...state }));
 };
 
-export const getLocalStorage = function () {
-  try {
-    const storedData = JSON.parse(localStorage.getItem(STORAGE_KEY));
-    if (storedData && Array.isArray(storedData.carts)) {
-      state.carts = storedData.carts;
-      state.totalPrice =
-        storedData.totalPrice || calculateTotalPrice(storedData.carts);
-      state.shipping = storedData.shipping;
-    }
-  } catch (e) {
-    console.error("Error parsing localStorage data:", e);
-    state.carts = [];
-    state.totalPrice = "0.00";
-    state.shipping = 18.99;
-  }
-};
+// export const getLocalStorage = function () {
+//   try {
+//     const storedData = JSON.parse(localStorage.getItem(STORAGE_KEY));
+//     if (storedData && Array.isArray(storedData.carts)) {
+//       state.carts = storedData.carts;
+//       state.totalPrice =
+//         storedData.totalPrice || calculateTotalPrice(storedData.carts);
+//       state.shipping = storedData.shipping;
+//     }
+//   } catch (e) {
+//     console.error("Error parsing localStorage data:", e);
+//     state.carts = [];
+//     state.totalPrice = "0.00";
+//     state.shipping = 18.99;
+//   }
+// };
 
 export const clearCart = function () {
   state.carts = [];
   state.totalPrice = "0.00";
-  state.shipping = 18.99;
+  state.shipping = DEFAULT_SHIPPING;
   state.isDiscount = false;
   setLocalStorage();
 };
 
-export const clearLocalStorage = function () {
-  localStorage.removeItem(STORAGE_KEY);
-};
+// export const clearLocalStorage = function () {
+//   localStorage.removeItem(STORAGE_KEY);
+// };
