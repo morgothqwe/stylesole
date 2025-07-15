@@ -581,10 +581,15 @@ body {
   font-weight: 400;
 }
 
+.create-account {
+  border-bottom: 1px solid #3f70a2;
+}
+
 .create-account:link,
 .create-account:visited,
 .create-account:active {
   color: #3f70a2;
+  text-decoration: none;
 }
 
 .hidden {

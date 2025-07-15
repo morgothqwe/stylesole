@@ -128,8 +128,17 @@ class View {
 
   renderCheckout() {
     if (!this._termsCheckbox || !this._orderBtn) return;
+
     const isCartEmpty = this._itemNumber.textContent === "0";
     this._orderBtn.disabled = !this._termsCheckbox.checked || isCartEmpty;
+    this._orderBtn.classList.toggle(
+      "enabled",
+      this._termsCheckbox.checked && !isCartEmpty
+    );
+    this._orderBtn.classList.toggle(
+      "disabled",
+      !this._termsCheckbox.checked || isCartEmpty
+    );
   }
 }
 
