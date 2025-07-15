@@ -1,6 +1,6 @@
 import { v4 as uuidv4 } from "uuid";
-import { STORAGE_KEY } from "./config";
-import { GIFT_CODE, DEFAULT_SHIPPING } from "../checkout/checkoutConfig";
+import { STORAGE_KEY, DEFAULT_SHIPPING } from "./config";
+import { GIFT_CODE } from "../checkout/checkoutConfig";
 
 import style1 from "url:../../img/style-1.webp";
 import style2 from "url:../../img/style-2.webp";
@@ -117,7 +117,8 @@ export const storeOrderId = function () {
 };
 
 export const addToCart = function (productInfo) {
-  const product = findProduct(productInfo);
+  const product = findProduct(productInfo.productId);
+  console.log(product);
   if (!product) return;
 
   const cartItem = {
@@ -159,15 +160,15 @@ export const removeFromCart = function (index) {
   }
 };
 
-// export const productPrice = function (productId) {
-//   const product = products.find((item) => item.id === productId);
-//   return product ? product.price : null;
-// };
+export const productPrice = function (productId) {
+  const product = findProduct(productId);
+  return product ? product.price : null;
+};
 
-// export const productImage = function (productId) {
-//   const product = products.find((item) => item.id === productId);
-//   return product ? product.bigImage_path : null;
-// };
+export const productImage = function (productId) {
+  const product = findProduct(productId);
+  return product ? product.bigImage_path : null;
+};
 
 export const addGiftCode = function (giftCode) {
   if (giftCode !== GIFT_CODE) return null;
@@ -188,22 +189,22 @@ export const setLocalStorage = function () {
   localStorage.setItem(STORAGE_KEY, JSON.stringify({ ...state }));
 };
 
-// export const getLocalStorage = function () {
-//   try {
-//     const storedData = JSON.parse(localStorage.getItem(STORAGE_KEY));
-//     if (storedData && Array.isArray(storedData.carts)) {
-//       state.carts = storedData.carts;
-//       state.totalPrice =
-//         storedData.totalPrice || calculateTotalPrice(storedData.carts);
-//       state.shipping = storedData.shipping;
-//     }
-//   } catch (e) {
-//     console.error("Error parsing localStorage data:", e);
-//     state.carts = [];
-//     state.totalPrice = "0.00";
-//     state.shipping = 18.99;
-//   }
-// };
+export const getLocalStorage = function () {
+  try {
+    const storedData = JSON.parse(localStorage.getItem(STORAGE_KEY));
+    if (storedData && Array.isArray(storedData.carts)) {
+      state.carts = storedData.carts;
+      state.totalPrice =
+        storedData.totalPrice || calculateTotalPrice(storedData.carts);
+      state.shipping = storedData.shipping;
+    }
+  } catch (e) {
+    console.error("Error parsing localStorage data:", e);
+    state.carts = [];
+    state.totalPrice = "0.00";
+    state.shipping = DEFAULT_SHIPPING;
+  }
+};
 
 export const clearCart = function () {
   state.carts = [];
@@ -213,6 +214,6 @@ export const clearCart = function () {
   setLocalStorage();
 };
 
-// export const clearLocalStorage = function () {
-//   localStorage.removeItem(STORAGE_KEY);
-// };
+export const clearLocalStorage = function () {
+  localStorage.removeItem(STORAGE_KEY);
+};
