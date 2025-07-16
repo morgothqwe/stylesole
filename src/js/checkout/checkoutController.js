@@ -35,7 +35,7 @@ const controlCheckout = function () {
 const init = function () {
   controlShopping();
   view.addHandlerGiftCode(controlGiftCode);
-  view.renderCheckout(); // check if its necessary or not
+  view.renderCheckout();
   view.addHandlerCheckoutBtn(controlCheckout);
   view.addHandlerClearCart(controlClearCart);
 };

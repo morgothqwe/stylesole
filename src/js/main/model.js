@@ -13,6 +13,7 @@ import bigStyle3 from "url:../../img/bigStyle-3.webp";
 import bigStyle4 from "url:../../img/bigStyle-4.webp";
 import bigStyle5 from "url:../../img/bigStyle-5.webp";
 
+// Consider adding more products by web owner
 const products = [
   {
     id: "p-1",
@@ -63,10 +64,7 @@ const products = [
 
 // Helper function to calculate total price
 const calculateTotalPrice = (carts) => {
-  const totalPrice = carts
-    .reduce((total, item) => total + item.price, 0)
-    .toFixed(2);
-  return totalPrice;
+  return carts.reduce((total, item) => total + item.price, 0).toFixed(2);
 };
 
 const findProduct = (productId) => products.find((pd) => pd.id === productId);
@@ -118,9 +116,14 @@ export const storeOrderId = function () {
 
 export const addToCart = function (productInfo) {
   const product = findProduct(productInfo.productId);
-  console.log(product);
-  if (!product) return;
-
+  if (
+    !product ||
+    !product.size.includes(productInfo.sizeId) ||
+    !product.color.includes(productInfo.colorId)
+  ) {
+    console.error("Invalid product, size, or color");
+    return null;
+  }
   const cartItem = {
     ...product,
     size: productInfo.sizeId,
