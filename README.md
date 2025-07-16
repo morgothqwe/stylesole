@@ -38,7 +38,7 @@ stylesole/
 │   │   │   └── checkoutController.js
 │   │   │   └── checkoutView.js
 │   │   │   └── checkoutConfig.js
-└── img/             # Product images
+└── img/
 ```
 
 ## 🧪 How to Run Locally
